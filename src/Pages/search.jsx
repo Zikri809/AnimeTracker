@@ -74,8 +74,8 @@ export default function searchpage(props){
                    return false
                 })
                 let deconstructed=new Set()
-                tempfiltered.forEach(({status,mal_id,images:{webp:{image_url}},season, year,episodes,title_english,title,score,scored_by,popularity,genres })=>(
-                   deconstructed.add({title_english,status,mal_id,images:{webp:{image_url}},season, year,episodes, title,score,scored_by,popularity,genres })
+                tempfiltered.forEach(({status,mal_id,images:{webp:{large_image_url}},season, year,episodes,title_english,title,score,scored_by,popularity,genres })=>(
+                   deconstructed.add({title_english,status,mal_id,images:{webp:{large_image_url}},season, year,episodes, title,score,scored_by,popularity,genres })
                    )
                )
                if(!isaddedarr.current){
@@ -115,7 +115,7 @@ export default function searchpage(props){
               
                     <Link to={'/search/'+params.title+'/'+element.mal_id}>
                          <Horizontalcard key={element.mal_id} 
-                    image={element.images.webp.image_url} 
+                    image={element.images.webp.large_image_url} 
                     status= {element.status}
                     season={element.season ==null ? ' ':element.season + ' '+ element.year }
                     episodes={element.episodes}

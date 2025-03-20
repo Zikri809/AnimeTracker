@@ -36,7 +36,7 @@ export default function detailanime(props){
                     isloading? <p>loading....</p>:
                     <Horizontalcard  
                     key={animeinfo.mal_id} 
-                    image={animeinfo.images.webp.image_url} 
+                    image={animeinfo.images.webp.large_image_url} 
                     status= {animeinfo.status}
                     season={animeinfo.season ==null ? ' ':animeinfo.season + ' '+ animeinfo.year }
                     episodes={animeinfo.episodes}

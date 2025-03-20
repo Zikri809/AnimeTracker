@@ -79,8 +79,8 @@ function more(props){
                    return false
                 })
                 let deconstructed=new Set()
-                 tempfiltered.forEach(({status,mal_id,images:{webp:{image_url}},season, year,episodes, title,score,scored_by,popularity,genres })=>(
-                    deconstructed.add({status,mal_id,images:{webp:{image_url}},season, year,episodes, title,score,scored_by,popularity,genres })
+                 tempfiltered.forEach(({status,mal_id,images:{webp:{large_image_url}},season, year,episodes, title,score,scored_by,popularity,genres })=>(
+                    deconstructed.add({status,mal_id,images:{webp:{large_image_url}},season, year,episodes, title,score,scored_by,popularity,genres })
                     )
                 )
                 //console.log('deconstructed arr is ',deconstructed)
@@ -125,7 +125,7 @@ function more(props){
                 <Link  to={'/'+props.sectionurl+'/'+element.mal_id}>
                     
                     <Horizontalcard ref={cardref} key={element.mal_id} 
-                    image={element.images.webp.image_url} 
+                    image={element.images.webp.large_image_url} 
                     status= {element.status}
                     season={element.season ==null ? ' ':element.season + ' '+ element.year }
                     episodes={element.episodes}

@@ -34,14 +34,15 @@ function UpcomingSec(){
                    return false
                 })
                 let deconstructed=new Set()
-                tempfiltered.forEach(({status,mal_id,images:{webp:{image_url}},season, year, title,score,scored_by,popularity,genres })=>(
-                   deconstructed.add({status,mal_id,images:{webp:{image_url}}, year,title,score})
+                tempfiltered.forEach(({status,mal_id,images:{webp:{large_image_url}},season, year, title,score,scored_by,popularity,genres })=>(
+                   deconstructed.add({status,mal_id,images:{webp:{large_image_url}}, year,title,score})
                    )
                )
                return [...deconstructed]
                 
             }
             catch(error){
+                fetchapi()
                 console.error(error)
             }
         }
@@ -87,7 +88,7 @@ function UpcomingSec(){
                 )
                          :(querydata?.map((element)=>(
                             <Link to={'/'+element.mal_id}>
-                                <CarouselItem key={element.id} className="pl-2 md:pl-4"> <Animecard title={element.title} link={element.images.webp.image_url} year={element.year} rating={element.score} status = {element.status}/></CarouselItem>
+                                <CarouselItem key={element.id} className="pl-2 md:pl-4"> <Animecard title={element.title} link={element.images.webp.large_image_url} year={element.year} rating={element.score} status = {element.status}/></CarouselItem>
                             </Link> 
                          )))
                     }
