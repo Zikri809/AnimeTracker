@@ -15,7 +15,7 @@ const queryclient = new QueryClient()
  },
  {
   path:'/morelastseason',
- element: <More storageidentifier='lastseason' storagetimeidentifier='lastseasontime' section='Last Season' sectionurl='lastseason' apilink='https://api.jikan.moe/v4/seasons/2024/fall?'/>
+ element: <More storageidentifier='lastseason' storagetimeidentifier='lastseasontime' section='Last Season' sectionurl='morelastseason' apilink='https://api.jikan.moe/v4/seasons/2024/fall?'/>
 },
 {
   path: '/morethiseseason',
