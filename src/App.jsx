@@ -14,8 +14,8 @@ const queryclient = new QueryClient()
 
  },
  {
-  path:'/moretrending',
- element: <More storageidentifier='trending' storagetimeidentifier='trendingtime' section='Trending Right Now' sectionurl='moretrending' apilink='https://api.jikan.moe/v4/top/anime?filter=airing'/>
+  path:'/morelastseason',
+ element: <More storageidentifier='lastseason' storagetimeidentifier='lastseasontime' section='Last Season' sectionurl='lastseason' apilink='https://api.jikan.moe/v4/seasons/2024/fall?'/>
 },
 {
   path: '/morethiseseason',
