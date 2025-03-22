@@ -30,7 +30,7 @@ function animecardhorizontal(props){
         <>
         <Card className='rounded-none w-screen border-l-1 hover:bg-zinc-800  text-white border-x-0 border-t-0 p-5  mx-0 border-none bg-black'>
             <CardContent className='flex p-0 flex-row gap-5 items-center'>
-                <img className="rounded-sm h-70   object-cover" src={props.image}></img>
+                <img className="rounded-sm w-60 sm:w-auto h-70   object-cover" src={props.image}></img>
                 <div className="flex flex-col h-70  overflow-hidden justify-between  items-start">
                     <Button variant="outline" className='bg-black border-1 font-medium text-sm text-blue-200 border-gray-700' >{props.status}</Button>
                 <div className="flex text-sm flex-wrap   flex-row gap-2">

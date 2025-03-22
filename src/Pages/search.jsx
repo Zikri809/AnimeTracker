@@ -17,7 +17,7 @@ export default function searchpage(props){
         
         useEffect(()=>{
             if(!isLoading){
-                const scrollresult = JSON.parse(localStorage.getItem('morescroll'))
+                const scrollresult = JSON.parse(sessionStorage.getItem('morescroll'))
                 if (scrollresult!=null){
                     scrollTo({ left: 0, top: scrollresult,  })
                 }
@@ -28,7 +28,7 @@ export default function searchpage(props){
         useEffect(()=>{
             function scrollhandler(){   
                //console.log( window.innerHeight + Math.ceil(window.scrollY)>=document.body.offsetHeight - 10 )
-               localStorage.setItem('morescroll',JSON.stringify(window.scrollY)) 
+               sessionStorage.setItem('morescroll',JSON.stringify(window.scrollY)) 
                if (  window.innerHeight + window.scrollY>=document.body.offsetHeight - 3000 && !isupdated.current){
                         setpage((currentpage)=>currentpage+1)
                         console.log('condition fullfiled',currentpage)
@@ -43,9 +43,9 @@ export default function searchpage(props){
         },[currentpage])
         async function fetchapi(currpage){
             try{
-                const storeddata = JSON.parse(localStorage.getItem('animedatasearch'))
+                const storeddata = JSON.parse(sessionStorage.getItem('animedatasearch'))
                 if(storeddata!==null){
-                    if( !(Math.floor(Date.now()/86400000)-JSON.parse(localStorage.getItem('lastupdatetimesearch'))>=1)){
+                    if( !(Math.floor(Date.now()/86400000)-JSON.parse(sessionStorage.getItem('lastupdatetimesearch'))>=1)){
                         console.log('lastupdatedtime',)
                         if(storeddata.length>animearr.length){
                             console.log('using already stored data',storeddata)
@@ -55,8 +55,8 @@ export default function searchpage(props){
                         }
                     }
                     else{
-                        localStorage.removeItem("animedatasearch")
-                        localStorage.removeItem("lastupdatetimesearch")
+                        sessionStorage.removeItem("animedatasearch")
+                        sessionStorage.removeItem("lastupdatetimesearch")
                     }
                 }  
                 const response = await fetch('https://api.jikan.moe/v4/anime?letter&sfw=true&page='+currpage+'&q='+params.title)
@@ -82,11 +82,11 @@ export default function searchpage(props){
                 isaddedarr.current = true
                 setAnimearr((animearr)=>[...animearr,...deconstructed])
                 const currenttimedays = Math.floor(Date.now()/86400000)
-                localStorage.setItem('lastupdatetimesearch',JSON.stringify(currenttimedays))
-                localStorage.setItem('animedatasearch',JSON.stringify([...animearr,...deconstructed]))
+                sessionStorage.setItem('lastupdatetimesearch',JSON.stringify(currenttimedays))
+                sessionStorage.setItem('animedatasearch',JSON.stringify([...animearr,...deconstructed]))
                 
                
-                //console.log('local storage ',JSON.parse(localStorage.getItem('animedata')))
+                //console.log('local storage ',JSON.parse(sessionStorage.getItem('animedata')))
                 isupdated.current = false
             }
                 setLoading(false)

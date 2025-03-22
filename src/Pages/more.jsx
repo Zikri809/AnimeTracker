@@ -19,7 +19,7 @@ function more(props){
       
         useEffect(()=>{
             if(!isLoading){
-                const scrollresult = JSON.parse(localStorage.getItem('morescroll'))
+                const scrollresult = JSON.parse(sessionStorage.getItem('morescroll'))
                 if (scrollresult!=null){
                     scrollTo({ left: 0, top: scrollresult,  })
                 }
@@ -31,7 +31,7 @@ function more(props){
                //console.log( window.innerHeight + Math.ceil(window.scrollY)>=document.body.offsetHeight - 10 )
                //about line below, how it work? dont't know suddenly decided to works along with teh useEffect above
                //  future me dont fix if it ain't broken
-               localStorage.setItem('morescroll',JSON.stringify(window.scrollY))
+               sessionStorage.setItem('morescroll',JSON.stringify(window.scrollY))
                 if (  window.innerHeight + window.scrollY>=document.body.offsetHeight - 3000 && !isupdated.current){
                         setpage((currentpage)=>currentpage+1)
                         console.log('condition fullfiled',currentpage)
@@ -46,9 +46,9 @@ function more(props){
         },[currentpage])
         async function fetchapi(currpage){
             try{
-                const storeddata = JSON.parse(localStorage.getItem('animedata'+props.storageidentifier))
+                const storeddata = JSON.parse(sessionStorage.getItem('animedata'+props.storageidentifier))
                 if(storeddata!==null){
-                    if( !(Math.floor(Date.now()/86400000)-JSON.parse(localStorage.getItem('lastupdatetime'+props.storagetimeidentifier))>=1)){
+                    if( !(Math.floor(Date.now()/86400000)-JSON.parse(sessionStorage.getItem('lastupdatetime'+props.storagetimeidentifier))>=1)){
                         console.log('lastupdatedtime',)
                         if(storeddata.length>animearr.length){
                             console.log('using already stored data',storeddata)
@@ -58,8 +58,8 @@ function more(props){
                         }
                     }
                     else{
-                        localStorage.removeItem("animedata"+props.storageidentifier)
-                        localStorage.removeItem("lastupdatetime"+props.storagetimeidentifier)
+                        sessionStorage.removeItem("animedata"+props.storageidentifier)
+                        sessionStorage.removeItem("lastupdatetime"+props.storagetimeidentifier)
                     }
                    
                 }
@@ -88,11 +88,11 @@ function more(props){
                     isaddedarr.current = true
                     setAnimearr((animearr)=>[...animearr,...deconstructed])
                     const currenttimedays = Math.floor(Date.now()/86400000)
-                    localStorage.setItem('lastupdatetime'+props.storagetimeidentifier,JSON.stringify(currenttimedays))
-                    localStorage.setItem('animedata'+props.storageidentifier,JSON.stringify([...animearr,...deconstructed]))
+                    sessionStorage.setItem('lastupdatetime'+props.storagetimeidentifier,JSON.stringify(currenttimedays))
+                    sessionStorage.setItem('animedata'+props.storageidentifier,JSON.stringify([...animearr,...deconstructed]))
                     
                    
-                    //console.log('local storage ',JSON.parse(localStorage.getItem('animedata')))
+                    //console.log('local storage ',JSON.parse(sessionStorage.getItem('animedata')))
                     isupdated.current = false
                 }
               

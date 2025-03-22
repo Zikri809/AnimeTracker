@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
 import Animecard from './animecard'
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import Cardskeleton from "./animecardskelaton";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card"
@@ -13,12 +13,13 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { QueryClient, useQuery } from "@tanstack/react-query";
-import { Season_context } from "@/App";
 function trendSec(){
-    const seasoninfo = useContext(Season_context)
+    const [animearr, setAnimearr] = useState([]);
+    
+        
         async function fetchapi(){
             try{
-                const response = await fetch('https://api.jikan.moe/v4/seasons/'+seasoninfo.past_year+'/'+seasoninfo.past_season+'?')
+                const response = await fetch('https://api.jikan.moe/v4/top/anime?filter=airing')
                 const apifeedback = await response.json()
                 const top24 = apifeedback.data.slice(0,24)
                 let tempfilteredSetid =  new Set()
@@ -54,8 +55,8 @@ function trendSec(){
     return(
        <div>
             <div className="flex flex-row  pl-4  pr-4 mb-2 justify-between items-center">
-                <div className="border-b-2  pb-2"><h4 className=" scroll-m-20 text-xl font-semibold tracking-tight">Last Season</h4> </div>
-                <Link to='morelastseason'>
+                <div className="border-b-2  pb-2"><h4 className=" scroll-m-20 text-xl font-semibold tracking-tight">Trending Right Now</h4> </div>
+                <Link to='moretrending'>
                     <Button className='bg-black border-gray-500' variant="outline" size="icon"><ChevronRight  /></Button>      
                 </Link>     
             </div>

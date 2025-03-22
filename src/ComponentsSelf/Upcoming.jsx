@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
 import Animecard from './animecard'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Cardskeleton from "./animecardskelaton"; 
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -13,14 +13,18 @@ import {
 } from "@/components/ui/carousel"
 import { Link } from "react-router-dom";
 import { QueryClient, useQuery } from "@tanstack/react-query";
+import { Season_context } from '@/App';
+
+
 function UpcomingSec(){
     const [animearr, setAnimearr] = useState([]);
-  
+    const seasoninfo = useContext(Season_context)
+    
     
         
         async function fetchapi(){
             try{
-                const response = await fetch('https://api.jikan.moe/v4/seasons/upcoming')
+                const response = await fetch('https://api.jikan.moe/v4/seasons/'+seasoninfo.upcoming_year+'/'+seasoninfo.upcoming_season+'?')
                 const apifeedback = await response.json()
                 const top24 = apifeedback.data.slice(0,24)
                 let tempfilteredSetid =  new Set()
@@ -52,7 +56,7 @@ function UpcomingSec(){
             staleTime: 1000 * 60 * 20,
             cacheTime:  1000 * 60 * 30, 
         })
-    
+    console.log('season context ',seasoninfo)
     return(
        <div className="my-5">
             <div className="flex flex-row  pl-4  pr-4 mb-2 justify-between items-center">

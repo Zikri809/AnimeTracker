@@ -16,9 +16,9 @@ function home() {
     const [searchval, Setsearchval] = useState(' ')
     const [text, Settext] = useState('')
     let navigate = useNavigate()
-    localStorage.setItem('morescroll',JSON.stringify(0))
-    localStorage.removeItem("animedatasearch")
-    localStorage.removeItem("lastupdatetimesearch")
+    sessionStorage.setItem('morescroll',JSON.stringify(0))
+    sessionStorage.removeItem("animedatasearch")
+    sessionStorage.removeItem("lastupdatetimesearch")
    
     function valchange(e){
       Settext(e.current.value)
