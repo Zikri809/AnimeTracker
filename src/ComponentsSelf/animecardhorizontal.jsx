@@ -32,7 +32,10 @@ function animecardhorizontal(props){
             <CardContent className='flex p-0 flex-row gap-5 w-screen items-center'>
                 <img className="rounded-sm h-55 w-35 sm:w-40 object-cover" src={props.image}></img>
                 <div className="flex flex-col items-start h-55 w-80 overflow-hidden sm:overflow-visible justify-between">
-                <Button variant="outline" className='bg-black border-1 font-medium text-sm text-blue-200 border-gray-700' >{props.status}</Button>
+                {props.status=='Finished Airing'?<Button variant="outline" className='bg-black border-1 font-medium text-sm text-green-500 border-gray-700' >{props.status}</Button>:
+                (props.status=='Currently Airing'?<Button variant="outline" className='bg-black border-1 font-medium text-sm text-blue-400 border-gray-700' >{props.status}</Button>:
+                    <Button variant="outline" className='bg-black border-1 font-medium text-sm text-red-400 border-gray-700' >{props.status}</Button>
+                )}
                 <div className="flex text-sm flex-row gap-2">
                     <p className="capitalize">{props.season}</p>
                     <p>{props.episodes==null ? '' : props.episodes+' episodes'} </p>

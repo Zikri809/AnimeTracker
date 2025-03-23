@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { createContext } from 'react'
+import { Analytics } from "@vercel/analytics/react"
+
 
 export const Season_context = createContext()
 function App() {
@@ -133,11 +135,13 @@ upcoming_year = upcoming_year_funct(seasons,current_season,current_year)
   <QueryClientProvider client={queryclient}>
     
       <RouterProvider router={router}/>
+     
+      <Analytics />
       <ReactQueryDevtools initialIsOpen={true} />
     
   </QueryClientProvider>
   </Season_context.Provider>
-    
+ 
   </>
   )
 }
