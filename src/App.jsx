@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { createContext } from 'react'
 import { Analytics } from "@vercel/analytics/react"
+import Trackigpage from './Pages/trackingform'
 
 
 export const Season_context = createContext()
@@ -125,6 +126,10 @@ upcoming_year = upcoming_year_funct(seasons,current_season,current_year)
 {
   path:'/search/:title/:mal_id',
   element: <Detailanime/>
+},
+{
+  path:'/:mal_id/tracking',
+  element: <Trackigpage/>
 }
 
 ])

@@ -1,8 +1,10 @@
 import Horizontalcard from '@/ComponentsSelf/animecardheader'
 import Navbar from '@/ComponentsSelf/detailednavbar'
 import { useEffect, useState } from "react"
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import Relation from '@/ComponentsSelf/min'
+import { Button } from '@/components/ui/button'
+import { Plus } from 'lucide-react';
 
 export default function detailanime(props){
     const [animeinfo, Setanimeinfo] = useState([])
@@ -140,6 +142,11 @@ export default function detailanime(props){
                     </div>
                 </div>
                     {isloading?<p>loading</p>: <Relation id={animeinfo.mal_id}/>}
+                    <Link to={'/'+id.mal_id+'/tracking'}>
+                    <Button type='button' size='lg' className='fixed right-0 bottom-0 mb-5 bg-gray-800 mr-5 hover:bg-gray-300 hover:text-black text-blue-200'>
+                    <Plus size={36} />Add to watchlist
+                    </Button>
+                    </Link>
             </div>
            
         </body>

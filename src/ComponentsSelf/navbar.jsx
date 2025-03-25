@@ -1,28 +1,17 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate  } from "react-router-dom"
 
-function navbar(){
+function navbar(props){
     const searchbar = useRef(null)
     const searchbutton = useRef(null)
     const [refstate, Setrefstate] = useState(true)
     const [searchval, Setsearchval] = useState(' ')
+    let navigate = useNavigate()
    
-    useEffect(()=>{
-        function clickhandler(){
-            console.log('Button Clicked')
-            console.log(inputsearch.value)
-            button.removeEventListener('click', clickhandler);
-            Setsearchval(inputsearch.value)
-
-           
-
-        }
-        const button = searchbutton.current
-        const inputsearch = searchbar.current
-        button.addEventListener('click',clickhandler)
-    },[searchval])
+    
+    
     return(
         <nav className="sticky z-3 border-b-1 border-gray-700 bg-black w-screen pl-4 h-20 px-2 pr-4 mb-3 top-0 left-0 flex flex-row items-center justify-between">
             
@@ -31,15 +20,15 @@ function navbar(){
             </div>
             <div className="sm:flex flex-row gap-2 hidden ">
                 <div className="flex w-full max-w-sm items-center space-x-2">
-                    <Input ref={searchbar} className='border-gray-500' type="email" placeholder="Search " />
-                    <Link to={searchval.length==0?'/':'/search/'+searchval}>
-                        <Button ref={searchbutton} type="submit">
+                    <Input ref={props.searchbarref} className='border-gray-500' type="email" placeholder="Search " />
+                   
+                        <Button ref={props.searchbuttonref} type="submit">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                             </svg>
                         </Button>
                     
-                    </Link>
+                 
                    
                 </div>
                 <Button className='text-black' variant="outline">Mylist</Button>
