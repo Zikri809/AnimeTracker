@@ -8,7 +8,7 @@ import {
   } from "@/components/ui/carousel"
   import { Card, CardContent } from "@/components/ui/card"
   import Numberedcarousel from '@/ComponentsSelf/numbered carousel'
- import {useState } from 'react'
+ import {useRef, useState } from 'react'
   import EmblaCarousel from 'embla-carousel'
   import { Toaster } from "@/components/ui/sonner"
   import { toast } from "sonner"
@@ -26,6 +26,7 @@ export default function trackingform(props){
     const [animeinfo, Setanimeinfo] = useState()
     const [isloading, Setloading] = useState(true)
     const[isadded, Setadded] = useState(false)
+    const btnref = useRef([])
     const test ='http://localhost:5173/'
     //const animeid ='50346'
     const id = useParams()
@@ -266,6 +267,8 @@ export default function trackingform(props){
         //to do : make sure that we a show is added to  category make sure to delete its existence in other category
       }
       //console.log({userstatus: status, userscore: score, userprogress: progress})
+      console.log('btnref',btnref)
+      //solving button first when click reset all styles to inactive using useref with looping then use e to target that specific element changes the style after that trigger a state so that it can force a rerender
     return(
         <div className='bg-black w-screen h-[100vh] overflow-hidden'>
             {isloading?<p>loading</p>:
@@ -280,11 +283,11 @@ export default function trackingform(props){
                 </div>
                 <div className='flex mb-5  flex-row justify-center w-full border-0 border-blue-500'>
                     <div className=' flex flex-row gap-2  w-fit flex-wrap '>
-                    <Button variant='outline' type="button" onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white  focus:text-green-500 focus:bg-black'>Watching</Button>
-                    {props.status=='Not yet aired' ||props.status=='Airing'?<Button disabled type="button" variant='outline' className='bg-black rounded-sm border-gray-400 text-white '>Completed</Button>: <Button type="button" variant='outline' onClick={completedclickhandler} className='bg-black rounded-sm border-gray-400 text-white focus:text-blue-500 focus:bg-black '>Completed</Button>}
-                    <Button variant='outline' type="button" onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white focus:text-indigo-400 focus:bg-black '>Plan To Watch</Button>    
-                    <Button variant='outline' type="button" onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white focus:text-yellow-500 focus:bg-black'>On Hold</Button>
-                    <Button variant='outline' type="button" onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white focus:text-red-500 focus:bg-black'>Dropped</Button>
+                   { animeinfo.status=='Not yet aired'?<Button disabled variant='outline' type="button"  className='bg-black rounded-sm border-gray-400 text-white  focus:text-green-500 focus:bg-black'>Watching</Button>:<Button ref={(Element) =>(btnref.current[0]=Element)} variant='outline' type="button" onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white  focus:text-green-500 focus:bg-black'>Watching</Button>}
+                    {animeinfo.status=='Not yet aired' ||animeinfo.status=='Airing'?<Button disabled type="button" variant='outline' className='bg-black rounded-sm border-gray-400 text-white '>Completed</Button>: <Button ref={(Element) =>(btnref.current[1]=Element)}  type="button" variant='outline' onClick={completedclickhandler} className='bg-black rounded-sm border-gray-400 text-white focus:text-blue-500 focus:bg-black '>Completed</Button>}
+                    <Button variant='outline' ref={(Element) =>(btnref.current[2]=Element)} type="button"  onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white focus:text-indigo-400 focus:bg-black '>Plan To Watch</Button>    
+                    <Button variant='outline' ref={(Element) =>(btnref.current[3]=Element)} type="button"  onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white focus:text-yellow-500 focus:bg-black'>On Hold</Button>
+                    <Button variant='outline' ref={(Element) =>(btnref.current[4]=Element)} type="button"  onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white focus:text-red-500 focus:bg-black'>Dropped</Button>
                     </div>
                 </div>
                
