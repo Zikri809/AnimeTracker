@@ -72,7 +72,7 @@ function UpcomingSec(){
                   }}
             >
                 <CarouselContent className="ml-1 md:ml-1 w-56">
-                    {isLoading ?  (
+                    {isLoading || querydata == undefined ?  (
                         <>
                             <Cardskeleton/>
                             <Cardskeleton/>

@@ -102,13 +102,35 @@ export default function trackingform(props){
         //console.log('button clicked')
         //api.scrollTo(props.episodes-1);
         api.scrollTo(animeinfo.episodes);
-        console.log(e)
+        for(let i =0 ; i<5 ; i++){
+            btnref.current[i].style.color = 'white'
+        }
+        e.target.style.color='#2196F3'
+        //console.log(e)
         Setstatus(e.target.innerText)
         //console.log('button clicked')
       }
       function statusbutton(e){
-        //console.log(e.target.innerText)
-        Setstatus(e.target.innerText)
+        for(let i =0 ; i<5 ; i++){
+            btnref.current[i].style.color = 'white'
+        }
+        let text = e.target.innerText
+        if(text=='Watching'){
+            console.log('triggered')
+            e.target.style.color='#4CAF50'
+        }
+        else if (text =='Plan To Watch'){
+            e.target.style.color='#5C6BC0'
+        }
+        else if(text =='On Hold'){
+            e.target.style.color = '#FFEB3B'
+        }
+        else{
+            e.target.style.color = '#F44336'
+        }
+        
+        console.log(e)
+        Setstatus(text)
       }
       function savehandler(){
         if(status==''){
@@ -283,11 +305,11 @@ export default function trackingform(props){
                 </div>
                 <div className='flex mb-5  flex-row justify-center w-full border-0 border-blue-500'>
                     <div className=' flex flex-row gap-2  w-fit flex-wrap '>
-                   { animeinfo.status=='Not yet aired'?<Button disabled variant='outline' type="button"  className='bg-black rounded-sm border-gray-400 text-white  focus:text-green-500 focus:bg-black'>Watching</Button>:<Button ref={(Element) =>(btnref.current[0]=Element)} variant='outline' type="button" onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white  focus:text-green-500 focus:bg-black'>Watching</Button>}
-                    {animeinfo.status=='Not yet aired' ||animeinfo.status=='Airing'?<Button disabled type="button" variant='outline' className='bg-black rounded-sm border-gray-400 text-white '>Completed</Button>: <Button ref={(Element) =>(btnref.current[1]=Element)}  type="button" variant='outline' onClick={completedclickhandler} className='bg-black rounded-sm border-gray-400 text-white focus:text-blue-500 focus:bg-black '>Completed</Button>}
-                    <Button variant='outline' ref={(Element) =>(btnref.current[2]=Element)} type="button"  onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white focus:text-indigo-400 focus:bg-black '>Plan To Watch</Button>    
-                    <Button variant='outline' ref={(Element) =>(btnref.current[3]=Element)} type="button"  onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white focus:text-yellow-500 focus:bg-black'>On Hold</Button>
-                    <Button variant='outline' ref={(Element) =>(btnref.current[4]=Element)} type="button"  onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white focus:text-red-500 focus:bg-black'>Dropped</Button>
+                   { animeinfo.status=='Not yet aired'?<Button disabled variant='outline' type="button" ref={(Element) =>(btnref.current[0]=Element)}  className='bg-black rounded-sm border-gray-400 text-white   focus:bg-black'>Watching</Button>:<Button ref={(Element) =>(btnref.current[0]=Element)} variant='outline' type="button" onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white hover:text-black  focus:bg-black'>Watching</Button>}
+                    {animeinfo.status=='Not yet aired' ||animeinfo.status=='Airing'?<Button disabled type="button" ref={(Element) =>(btnref.current[1]=Element)}  variant='outline' className='bg-black rounded-sm border-gray-400 text-white '>Completed</Button>: <Button ref={(Element) =>(btnref.current[1]=Element)}  type="button" variant='outline' onClick={completedclickhandler} className='bg-black rounded-sm border-gray-400 text-white hover:text-black focus:bg-black '>Completed</Button>}
+                    <Button variant='outline' ref={(Element) =>(btnref.current[2]=Element)} type="button"  onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white hover:text-black focus:bg-black '>Plan To Watch</Button>    
+                    <Button variant='outline' ref={(Element) =>(btnref.current[3]=Element)} type="button"  onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white hover:text-black focus:bg-black'>On Hold</Button>
+                    <Button variant='outline' ref={(Element) =>(btnref.current[4]=Element)} type="button"  onClick={statusbutton} className='bg-black rounded-sm border-gray-400 text-white hover:text-black focus:bg-black'>Dropped</Button>
                     </div>
                 </div>
                

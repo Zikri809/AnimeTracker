@@ -13,7 +13,7 @@ function navbar(props){
     
     
     return(
-        <nav className="sticky z-3 border-b-1 border-gray-700 bg-black w-screen pl-4 h-20 px-2 pr-4 mb-3 top-0 left-0 flex flex-row items-center justify-between">
+        <nav className="sticky z-3 border-b-0 border-gray-700 bg-black  w-screen pl-4 h-20 px-2 pr-4 mb-3 top-0 left-0 flex flex-row items-center justify-between">
             
             <div>
             <h1 className="bg-linear-to-r from-gray-300 via-gray-500 to-gray-700 text-transparent bg-clip-text scroll-m-20 text-4xl font-extrabold font-poppins tracking-tight lg:text-5xl">AniTracker</h1>
