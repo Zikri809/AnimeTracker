@@ -130,7 +130,15 @@ upcoming_year = upcoming_year_funct(seasons,current_season,current_year)
 {
   path:'/:mal_id/tracking',
   element: <Trackigpage/>
-}
+},
+{
+  path:'/:section/:mal_id/tracking',
+  element: <Trackigpage/>
+},
+{
+  path:'/search/:title/:mal_id/tracking',
+  element: <Trackigpage/>
+},
 
 ])
 

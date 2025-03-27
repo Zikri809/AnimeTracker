@@ -142,7 +142,7 @@ export default function detailanime(props){
                     </div>
                 </div>
                     {isloading?<p>loading</p>: <Relation id={animeinfo.mal_id}/>}
-                    <Link to={'/'+id.mal_id+'/tracking'}>
+                    <Link to={id.hasOwnProperty('section')?('/'+id.section+'/'+id.mal_id+'/tracking'):(id.hasOwnProperty('title')?'/search/'+id.title+'/'+id.mal_id+'/tracking':'/'+id.mal_id+'/tracking')}>
                     <Button type='button' size='xl' className='p-4 sm:p-5 sm:text-lg fixed right-0 bottom-0 mb-5 bg-gray-800 mr-5 hover:bg-gray-300 hover:text-black text-blue-100'>
                     <Plus size={36} />Add to watchlist
                     </Button>
