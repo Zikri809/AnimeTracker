@@ -22,7 +22,7 @@ function home() {
     sessionStorage.setItem('morescroll',JSON.stringify(0))
     sessionStorage.removeItem("animedatasearch")
     sessionStorage.removeItem("lastupdatetimesearch")
-   
+    sessionStorage.setItem('activetab','Plan To Watch')
  
     useEffect(()=>{
       
@@ -67,9 +67,9 @@ function home() {
 
   return (
    <body className='relative top-0 left-0  overflow-x-clip m-0   w-[100%] h-[1500px]  bg-black text-white font-poppins my-1 antialiased' >
-        <Nav searchbarref={navsearchref}  searchbuttonref={navbuttonref}/>
+        <Nav searchbarref={navsearchref}   searchbuttonref={navbuttonref}/>
         <div className='w-screen bg-black px-4'>
-        <div className="flex  max-w-sm justify-around  items-center sm:hidden space-x-2">
+        <div className="flex  w-full justify-around  items-center sm:hidden space-x-2">
           <Input ref={searchbar} className='border-gray-500' type="search" placeholder="Search"  />
           
               <Button ref={searchbutton} type="button">

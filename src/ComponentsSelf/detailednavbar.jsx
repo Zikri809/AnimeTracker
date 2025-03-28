@@ -28,7 +28,7 @@ console.log('id is',id)
 return (
     <nav className="fixed border-b-1 border-gray-700 z-3 bg-black w-screen pl-4 h-20 px-2 pr-4 mb-3 top-0 left-0 flex flex-row items-center justify-between">
         <div className="flex  flex-row items-center gap-2 sm:gap-1">
-            <Link to={!id.hasOwnProperty('section')?(id.hasOwnProperty('title')?'/search/'+id.title:'/'):'/'+id.section}>
+            <Link to={!id.hasOwnProperty('section')?(id.hasOwnProperty('title')?'/search/'+id.title:(id.hasOwnProperty('mylist_tab')?'/mylist':'/')):('/'+id.section)}>
             <Button className='bg-black border-gray-700 ' variant="outline" size="icon"><ChevronLeft  /></Button> 
             </Link>
             

@@ -14,7 +14,7 @@ import {
   import { toast } from "sonner"
   import { Trash } from 'lucide-react';
   import { useEffect } from 'react'
-  import { useParams } from 'react-router-dom'
+  import { Navigate, useNavigate, useParams } from 'react-router-dom'
 
 
 export default function trackingform(props){
@@ -30,6 +30,7 @@ export default function trackingform(props){
     const test ='http://localhost:5173/'
     //const animeid ='50346'
     const id = useParams()
+    let navigate = useNavigate()
     
     useEffect(()=>{
         if(!isloading)
@@ -170,7 +171,7 @@ export default function trackingform(props){
             toast.success('Watchlist saved')
            
         }
-        if(status=='Completed'){
+        else if(status=='Completed'){
            
             if(localStorage.getItem('Completed')==null){
                 const Completed = new Map()
@@ -199,7 +200,7 @@ export default function trackingform(props){
             toast.success('Watchlist saved')
            
         }
-        if(status=='Plan To Watch'){
+        else if(status=='Plan To Watch'){
            
             if(localStorage.getItem('PlanToWatch')==null){
                 const PlanToWatch = new Map()
@@ -228,7 +229,7 @@ export default function trackingform(props){
             toast.success('Watchlist saved')
            
         }
-        if(status=='On Hold'){
+        else if(status=='On Hold'){
            
             if(localStorage.getItem('OnHold')==null){
                 const OnHold = new Map()
@@ -257,7 +258,7 @@ export default function trackingform(props){
             toast.success('Watchlist saved')
            
         }
-        if(status=='Dropped'){
+        else {
            
             if(localStorage.getItem('Dropped')==null){
                 const Dropped = new Map()
@@ -286,6 +287,10 @@ export default function trackingform(props){
             toast.success('Watchlist saved')
             //console.log(new Map(JSON.parse(localStorage.getItem('Watching'))))  
         }
+        setTimeout(() => {
+            navigate(!id.hasOwnProperty('section')?(id.hasOwnProperty('title')?'/search/'+id.title:(id.hasOwnProperty('mylist_tab')?'/mylist':'/')):('/'+id.section))
+        }, 1000);
+        
         //to do : make sure that we a show is added to  category make sure to delete its existence in other category
       }
       //console.log({userstatus: status, userscore: score, userprogress: progress})

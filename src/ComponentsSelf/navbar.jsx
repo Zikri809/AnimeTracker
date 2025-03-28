@@ -13,10 +13,10 @@ function navbar(props){
     
     
     return(
-        <nav className="sticky z-3 border-b-0 border-gray-700 bg-black  w-screen pl-4 h-20 px-2 pr-4 mb-3 top-0 left-0 flex flex-row items-center justify-between">
+        <nav className="sticky z-3 backdrop-blur-sm sm:bg-black border-b-0 border-gray-700 bg-transparent  w-screen pl-4 h-20 px-2 pr-4 mb-3 top-0 left-0 flex flex-row items-center justify-between">
             
             <div>
-            <h1 className="bg-linear-to-r from-gray-300 via-gray-500 to-gray-700 text-transparent bg-clip-text scroll-m-20 text-4xl font-extrabold font-poppins tracking-tight lg:text-5xl">AniTracker</h1>
+            <h1 className="bg-linear-to-r text-white scroll-m-20 text-4xl font-extrabold font-poppins tracking-tight lg:text-5xl">AniTracker</h1>
             </div>
             <div className="sm:flex flex-row gap-2 hidden ">
                 <div className="flex w-full max-w-sm items-center space-x-2">
@@ -31,14 +31,20 @@ function navbar(props){
                  
                    
                 </div>
+                <Link to='/mylist'>
                 <Button className='text-black' variant="outline">Mylist</Button>
+                </Link>
+               
                 
             </div>
-            <Button className='text-black sm:hidden ' variant="outline">
+            <Link className="sm:hidden" to='/mylist'>
+                <Button className='text-white   text-lg bg-transparent border-0' variant="outline">Mylist</Button>
+                </Link>
+           { /*<Button className='border-none sm:hidden bg-transparent text-white ' variant="outline">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
-                </Button>
+                </Button> */}
         </nav>
     )
 } export default navbar

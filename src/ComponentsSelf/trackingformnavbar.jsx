@@ -7,7 +7,7 @@ export default function searchnavbar(props){
     return(
         <nav className="fixed border-b-1 border-gray-700 z-3 bg-black w-screen pl-4 h-20 px-2 pr-4 mb-3 top-0 left-0 flex flex-row items-center justify-between">
         <div className="flex  flex-row items-center gap-2 sm:gap-2">
-        <Link to={!id.hasOwnProperty('section')?(id.hasOwnProperty('title')?'/search/'+id.title+'/'+id.mal_id:'/'+id.mal_id):'/'+id.section+'/'+id.mal_id}>
+        <Link to={!id.hasOwnProperty('section')?(id.hasOwnProperty('title')?'/search/'+id.title+'/'+id.mal_id:(id.hasOwnProperty('mylist_tab')?'/mylist/'+id.mylist_tab+'/'+id.mal_id:'/'+id.mal_id)):'/'+id.section+'/'+id.mal_id}>
              <Button className='bg-black border-gray-700 text-white ' variant="outline" size="icon"><ChevronLeft  /></Button> 
             </Link>
            
