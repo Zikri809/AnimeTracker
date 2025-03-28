@@ -32,7 +32,7 @@ function more(props){
                //about line below, how it work? dont't know suddenly decided to works along with teh useEffect above
                //  future me dont fix if it ain't broken
                sessionStorage.setItem('morescroll',JSON.stringify(window.scrollY))
-                if (  window.innerHeight + window.scrollY>=document.body.offsetHeight - 3000 && !isupdated.current){
+                if (  window.innerHeight + window.scrollY>=document.body.offsetHeight - 2000 && !isupdated.current){
                         setpage((currentpage)=>currentpage+1)
                         console.log('condition fullfiled',currentpage)
                         isaddedarr.current = false
@@ -52,6 +52,9 @@ function more(props){
                         console.log('lastupdatedtime',)
                         if(storeddata.length>animearr.length){
                             console.log('using already stored data',storeddata)
+                            console.log('storedata length ', storeddata.length)
+                            //console.log('store data page ',storeddata.length/25)
+                            setpage(Math.ceil(storeddata.length/24)+1)
                             setAnimearr(storeddata)
                             setLoading(false)
                             return
@@ -64,7 +67,7 @@ function more(props){
                    
                 }
              
-                const response = await fetch(props.apilink+'&sfw=true&page='+currpage)
+                const response = await fetch(props.apilink+'&sfw=true&limit=24&page='+currpage)
                 const apifeedback = await response.json()
                 const top24 = apifeedback.data
                 //console.log('apifeedback',apifeedback)
@@ -124,7 +127,7 @@ function more(props){
                (animearr.map((element) =>(
                 <Link  to={'/'+props.sectionurl+'/'+element.mal_id}>
                     
-                    <Horizontalcard ref={cardref} key={element.mal_id} 
+                    <Horizontalcard  ref={cardref} key={element.mal_id} 
                     image={element.images.webp.large_image_url} 
                     status= {element.status}
                     season={element.season ==null ? ' ':element.season + ' '+ element.year }

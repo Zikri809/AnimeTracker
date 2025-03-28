@@ -29,7 +29,7 @@ export default function searchpage(props){
             function scrollhandler(){   
                //console.log( window.innerHeight + Math.ceil(window.scrollY)>=document.body.offsetHeight - 10 )
                sessionStorage.setItem('morescroll',JSON.stringify(window.scrollY)) 
-               if (  window.innerHeight + window.scrollY>=document.body.offsetHeight - 3000 && !isupdated.current){
+               if (  window.innerHeight + window.scrollY>=document.body.offsetHeight - 2000 && !isupdated.current){
                         setpage((currentpage)=>currentpage+1)
                         console.log('condition fullfiled',currentpage)
                         isaddedarr.current = false
@@ -49,6 +49,7 @@ export default function searchpage(props){
                         console.log('lastupdatedtime',)
                         if(storeddata.length>animearr.length){
                             console.log('using already stored data',storeddata)
+                            setpage(Math.ceil(storeddata.length/24)+1)
                             setAnimearr(storeddata)
                             setLoading(false)
                             return
@@ -59,7 +60,7 @@ export default function searchpage(props){
                         sessionStorage.removeItem("lastupdatetimesearch")
                     }
                 }  
-                const response = await fetch('https://api.jikan.moe/v4/anime?letter&sfw=true&page='+currpage+'&q='+params.title)
+                const response = await fetch('https://api.jikan.moe/v4/anime?letter&limit=24&sfw=true&page='+currpage+'&q='+params.title)
                 const apifeedback = await response.json()
                 const top24 = apifeedback.data
                 console.log('apifeedback',apifeedback)
