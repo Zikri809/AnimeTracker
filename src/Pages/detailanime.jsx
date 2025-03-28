@@ -23,6 +23,7 @@ export default function detailanime(props){
                 console.log(showinfo)
                 Setanimeinfo(showinfo)
                 Setloading(false)
+                window.scrollTo(0,0)
             }
             catch(error){
                fetchapi()
