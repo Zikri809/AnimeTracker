@@ -19,16 +19,28 @@ export default function mylist(){
     useEffect(()=>{
         if(!isloading){
             const scrollresult = JSON.parse(sessionStorage.getItem('mylistscroll'))
-            if (scrollresult!=null){
-                scrollTo({ left: 0, top: scrollresult,  })
-            }
+            console.log('retrieve scroll position')
+                if (scrollresult!=null){
+                    console.log('scroll result ',scrollresult)
+                    scrollTo({ left: 0, top: scrollresult,  })
+                }
+          
+          
         }
     },[isloading])
 
     function scrollreset(){
+       console.log('reset triggered')
         sessionStorage.setItem('mylistscroll',JSON.stringify(0))
     }
-    sessionStorage.setItem('mylistscroll',JSON.stringify(window.scrollY))
+    function scrollupdater(){
+        console.log('scroll y' , window.scrollY)
+        sessionStorage.setItem('mylistscroll',JSON.stringify(window.scrollY))
+    }
+   
+
+     
+    
     useEffect(()=>{
         Setcompleted(new Map(JSON.parse(localStorage.getItem('Completed'))))
         Setplan(new Map(JSON.parse(localStorage.getItem('PlanToWatch'))))
@@ -50,25 +62,25 @@ export default function mylist(){
        
     }
   
-    console.log('completed map', completedmap)
+    //console.log('completed map', completedmap)
     return (
-        <div className="bg-black  h-3000"> 
+        <div className="bg-black  min-h-[100vh]"> 
              <Navbar/>
       
              <Tabs defaultValue="Plan To Watch" value={activetab} onValueChange={handletabchange} className="relative w-full top-20  bg-black">
-            <TabsList className='w-full text-xl ml-0 fixed touch-auto pb-0 rounded-none bg-black text-black border-b-1 overflow-auto border-gray-600'>
-              <TabsTrigger onClick={scrollreset} className='ml-15 sm:ml-4  text-base data-[state=active]:bg-gray-600  data-[state=active]:rounded-b-none data-[state=active]:text-white text-white active:bg-black ' value="Plan To Watch">Plan To Watch</TabsTrigger>
+            <TabsList className='w-full text-xl ml-0 z-2 fixed touch-auto pb-0 rounded-none bg-black text-black border-b-1 overflow-auto border-gray-600'>
+              <TabsTrigger  onClick={scrollreset} className='ml-15 sm:ml-4  text-base data-[state=active]:bg-gray-600  data-[state=active]:rounded-b-none data-[state=active]:text-white text-white active:bg-black ' value="Plan To Watch">Plan To Watch</TabsTrigger>
               <TabsTrigger  onClick={scrollreset} className='text-white    text-base  data-[state=active]:bg-gray-600 data-[state=active]:rounded-b-none data-[state=active]:text-white' value="Completed">Completed</TabsTrigger>
               <TabsTrigger  onClick={scrollreset} className='text-white    text-base data-[state=active]:bg-gray-600  data-[state=active]:rounded-b-none data-[state=active]:text-white' value="Watching">Watching</TabsTrigger>
               <TabsTrigger  onClick={scrollreset} className='text-white    text-base data-[state=active]:bg-gray-600  data-[state=active]:rounded-b-none data-[state=active]:text-white' value="On Hold">On Hold</TabsTrigger>
               <TabsTrigger  onClick={scrollreset} className='text-white    text-base data-[state=active]:bg-gray-600  data-[state=active]:rounded-b-none data-[state=active]:text-white' value="Dropped">Dropped</TabsTrigger>
             </TabsList>
-            <TabsContent className='relative top-10 lg:grid lg:grid-cols-2 w-screen lg:grid-rows' value="Plan To Watch">
+            <TabsContent className='relative top-10 lg:grid  lg:grid-cols-2 w-screen lg:grid-rows' value="Plan To Watch">
             {isloading? <p>Loading please wait</p>:
                (Array.from(planmap).map(([key, value]) =>(
-                        <Link  to={'/mylist/Plan To Watch/'+value.mal_id}>
+                        <Link onClick={scrollupdater}   to={'/mylist/Plan To Watch/'+value.mal_id}>
                             
-                            <Horizontalcard   key={value.mal_id} 
+                            <Horizontalcard  key={value.mal_id} 
                             image={value.images.webp.large_image_url} 
                             status= {value.status}
                             season={value.season ==null ? ' ':value.season + ' '+ value.year }
