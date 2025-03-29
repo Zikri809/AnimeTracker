@@ -9,6 +9,7 @@ import { createContext } from 'react'
 import { Analytics } from "@vercel/analytics/react"
 import Trackigpage from './Pages/trackingform'
 import Mylist from './Pages/mylist.jsx'
+import Detailanimerelation from './Pages/detailanimerelation.jsx'
 
 
 export const Season_context = createContext()
@@ -117,8 +118,24 @@ upcoming_year = upcoming_year_funct(seasons,current_season,current_year)
   element: <Detailanime/>
 },
 {
+  path: '/:section/:mal_id/relation/:relation_id',
+  element: <Detailanimerelation/>
+},
+{
+  path: '/:section/:mal_id/relation/:relation_id/tracking',
+  element: <Trackigpage/>
+},
+{
   path: '/:mal_id',
   element: <Detailanime/>
+},
+{
+  path: '/:mal_id/relation/:relation_id',
+  element: <Detailanimerelation/>
+},
+{
+  path: '/:mal_id/relation/:relation_id/tracking',
+  element: <Trackigpage/>
 },
 {
   path:'/search/:title',
@@ -127,6 +144,14 @@ upcoming_year = upcoming_year_funct(seasons,current_season,current_year)
 {
   path:'/search/:title/:mal_id',
   element: <Detailanime/>
+},
+{
+  path:'/search/:title/:mal_id/relation/:relation_id',
+  element: <Detailanimerelation/>
+},
+{
+  path:'/search/:title/:mal_id/relation/:relation_id/tracking',
+  element: <Trackigpage/>
 },
 {
   path:'/:mal_id/tracking',
@@ -147,6 +172,14 @@ upcoming_year = upcoming_year_funct(seasons,current_season,current_year)
 {
   path:'/mylist/:mylist_tab/:mal_id',
   element:<Detailanime/>
+},
+{
+  path:'/mylist/:mylist_tab/:mal_id/relation/:relation_id',
+  element:<Detailanimerelation/>
+},
+{
+  path:'/mylist/:mylist_tab/:mal_id/relation/:relation_id/tracking',
+  element:<Trackigpage/>
 },
 {
   path:'/mylist/:mylist_tab/:mal_id/tracking',

@@ -34,7 +34,7 @@ export default function searchpage(props){
                         console.log('condition fullfiled',currentpage)
                         isaddedarr.current = false
                         isupdated.current = true
-                        setLoading(true)
+                       
                         window.removeEventListener('scroll', scrollhandler)
                        
                     }
@@ -51,7 +51,6 @@ export default function searchpage(props){
                             console.log('using already stored data',storeddata)
                             setpage(Math.ceil(storeddata.length/24)+1)
                             setAnimearr(storeddata)
-                            setLoading(false)
                             return
                         }
                     }
@@ -110,9 +109,9 @@ export default function searchpage(props){
     return(
        <body   className='relative top-0 left-0 font-poppins overflow-x-hidden m-0   w-screen h-auto  bg-black text-white font-poppins ml-1  antialiased' >
             <Navbar searchtitle={params.title}/>
-            <div  className='relative top-18 lg:grid lg:grid-cols-2 w-screen lg:grid-rows '>
+            { isLoading?<p className="text-white w-full h-full text-center px-50 py-60 ">Loading, please wait....</p>:<div  className='relative top-18 lg:grid lg:grid-cols-2 w-screen lg:grid-rows '>
             {
-             isLoading?<p className="text-white w-full h-full text-center py-60 ">Loading please wait....</p>: ( animearr.length!=0?(animearr.map((element) =>(
+             ( animearr.length!=0?(animearr.map((element) =>(
               
                     <Link to={'/search/'+params.title+'/'+element.mal_id}>
                          <Horizontalcard key={element.mal_id} 
@@ -136,7 +135,7 @@ export default function searchpage(props){
                     
                 )):<p className="text-white w-full h-full text-center py-60 ">No shows with this keyword yet</p>)
             }
-            </div>
+            </div>}
            
            
 

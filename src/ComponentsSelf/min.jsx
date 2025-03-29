@@ -1,8 +1,10 @@
 import React from 'react';
 import { useEffect, useState } from "react"
+import { Link,useParams } from 'react-router-dom';
 const relation = (props) => {
   const [animerelinfo, Setanimerelinfo] = useState([])
   const [isloading, Setloading] = useState(true)
+  const id = useParams()
   useEffect(()=>{
   async function fetchapi(){
       try{
@@ -31,11 +33,20 @@ console.log('animerelinfo ',animerelinfo)
       isloading?<p>loading</p>:(animerelinfo!=undefined?animerelinfo.map((object)=>(
         <div>
            <p className=' text-gray-400'>{object.relation}</p>
-           {
-            object.entry.map((object)=>{
+          { object.relation=='Prequel' ||object.relation=='Sequel' ||object.relation=='Alternative Version' ||object.relation=='Side Story' ?
+           ( object.entry.map((object)=>{
+              return (
+              <Link to={id.hasOwnProperty('section')?('/'+id.section+'/'+id.mal_id+'/relation/'+object.mal_id):(id.hasOwnProperty('title')?'/search/'+id.title+'/'+id.mal_id+'/relation/'+object.mal_id:(id.hasOwnProperty('mylist_tab')?'/mylist/'+id.mylist_tab+'/'+id.mal_id+'/relation/'+object.mal_id:'/'+id.mal_id+'/relation/'+object.mal_id))}>
+                  <p className='text-blue-500'>{object.name}</p>
+              </Link>
+            
+            )
+            
+            })): ( object.entry.map((object)=>{
               return <p className='text-white'>{object.name}</p>
-            })
-           }
+            }))
+          }
+           
         </div>
        
         

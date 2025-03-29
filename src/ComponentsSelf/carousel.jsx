@@ -21,11 +21,11 @@ export function CarouselDemo() {
     Autoplay({ delay: 2000, stopOnInteraction: false })
   )
 
-  const imagearr = ['https://cdn.myanimelist.net/images/anime/1750/145801l.jpg?_gl=1*11kk1f7*_gcl_au*MTM3NDQyODcyNC4xNzQxMTkyNzU4*_ga*MjA0NDg0MTY4Mi4xNzQxMTkyNzU4*_ga_26FEP9527K*MTc0MTE5Mjc1Ni4xLjEuMTc0MTE5MzE1OS4xMi4wLjA.',
-    'https://cdn.myanimelist.net/images/anime/1437/115925l.jpg',
-    'https://cdn.myanimelist.net/images/anime/1091/145945l.jpg?_gl=1*1t9umzs*_gcl_au*MTM3NDQyODcyNC4xNzQxMTkyNzU4*_ga*MjA0NDg0MTY4Mi4xNzQxMTkyNzU4*_ga_26FEP9527K*MTc0MTE5Mjc1Ni4xLjEuMTc0MTE5MzA3NC4xNC4wLjA.',
-    'https://cdn.myanimelist.net/images/anime/1848/147037l.jpg?_gl=1*1degood*_gcl_au*MTM3NDQyODcyNC4xNzQxMTkyNzU4*_ga*MjA0NDg0MTY4Mi4xNzQxMTkyNzU4*_ga_26FEP9527K*MTc0MTE5Mjc1Ni4xLjEuMTc0MTE5MzI5OS40Ni4wLjA.',
-    'https://cdn.myanimelist.net/images/anime/1258/147105l.jpg',
+  const imagearr = ['https://cdn.myanimelist.net/images/anime/1750/145801l.webp?_gl=1*11kk1f7*_gcl_au*MTM3NDQyODcyNC4xNzQxMTkyNzU4*_ga*MjA0NDg0MTY4Mi4xNzQxMTkyNzU4*_ga_26FEP9527K*MTc0MTE5Mjc1Ni4xLjEuMTc0MTE5MzE1OS4xMi4wLjA.',
+    'https://cdn.myanimelist.net/images/anime/1437/115925l.webp',
+    'https://cdn.myanimelist.net/images/anime/1091/145945l.webp?_gl=1*1t9umzs*_gcl_au*MTM3NDQyODcyNC4xNzQxMTkyNzU4*_ga*MjA0NDg0MTY4Mi4xNzQxMTkyNzU4*_ga_26FEP9527K*MTc0MTE5Mjc1Ni4xLjEuMTc0MTE5MzA3NC4xNC4wLjA.',
+    'https://cdn.myanimelist.net/images/anime/1848/147037l.webp?_gl=1*1degood*_gcl_au*MTM3NDQyODcyNC4xNzQxMTkyNzU4*_ga*MjA0NDg0MTY4Mi4xNzQxMTkyNzU4*_ga_26FEP9527K*MTc0MTE5Mjc1Ni4xLjEuMTc0MTE5MzI5OS40Ni4wLjA.',
+    'https://cdn.myanimelist.net/images/anime/1258/147105l.webp',
   ]
   return (
     <div className="h-140">

@@ -83,7 +83,7 @@ export default function trackingform(props){
     useEffect(()=>{
             async function fetchapi(){
                 try{
-                    const response = await fetch('https://api.jikan.moe/v4/anime/'+id.mal_id+'/full')
+                    const response = await fetch('https://api.jikan.moe/v4/anime/'+(id.hasOwnProperty('relation_id')?id.relation_id:id.mal_id)+'/full')
                     const apifeedback = await response.json()
                     const showinfo = apifeedback.data
                     console.log(showinfo)

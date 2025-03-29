@@ -1,5 +1,5 @@
 import Horizontalcard from '@/ComponentsSelf/animecardheader'
-import Navbar from '@/ComponentsSelf/detailednavbar'
+import Navbar from '@/ComponentsSelf/detailedrelationnavbar'
 import { useEffect, useState } from "react"
 import { useParams, Link } from 'react-router-dom'
 import Relation from '@/ComponentsSelf/min'
@@ -17,7 +17,7 @@ export default function detailanime(props){
     useEffect(()=>{
         async function fetchapi(){
             try{
-                const response = await fetch('https://api.jikan.moe/v4/anime/'+id.mal_id+'/full')
+                const response = await fetch('https://api.jikan.moe/v4/anime/'+id.relation_id+'/full')
                 const apifeedback = await response.json()
                 const showinfo = apifeedback.data
                 console.log(showinfo)
@@ -146,7 +146,10 @@ export default function detailanime(props){
                     </div>
                 </div>
                     {isloading?<p>loading</p>: <Relation id={animeinfo.mal_id}/>}
-                    <Link to={id.hasOwnProperty('section')?('/'+id.section+'/'+id.mal_id+'/tracking'):(id.hasOwnProperty('title')?'/search/'+id.title+'/'+id.mal_id+'/tracking':(id.hasOwnProperty('mylist_tab')?'/mylist/'+id.mylist_tab+'/'+id.mal_id+'/tracking':'/'+id.mal_id+'/tracking'))}>
+                    <Link to={id.hasOwnProperty('section')?('/'+id.section+'/'+id.mal_id+'/relation/'+id.relation_id+'/tracking'):
+                        (id.hasOwnProperty('title')?'/search/'+id.title+'/'+id.mal_id+'/relation/'+id.relation_id+'/tracking':
+                        (id.hasOwnProperty('mylist_tab')?'/mylist/'+id.mylist_tab+'/'+id.mal_id+'/relation/'+id.relation_id+'/tracking':
+                        '/'+id.mal_id+'/relation/'+id.relation_id+'/tracking'))}>
                     <Button type='button' size='xl' className='p-4 sm:p-5 sm:text-lg fixed right-0 bottom-0 mb-5 bg-gray-800 mr-5 hover:bg-gray-300 hover:text-black text-blue-100'>
                     <Plus size={36} />Add to watchlist
                     </Button>
