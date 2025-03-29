@@ -112,7 +112,7 @@ export default function searchpage(props){
             <Navbar searchtitle={params.title}/>
             <div  className='relative top-18 lg:grid lg:grid-cols-2 w-screen lg:grid-rows '>
             {
-               (animearr.map((element) =>(
+             isLoading?<p className="text-white w-full h-full text-center py-60 ">Loading please wait....</p>: ( animearr.length!=0?(animearr.map((element) =>(
               
                     <Link to={'/search/'+params.title+'/'+element.mal_id}>
                          <Horizontalcard key={element.mal_id} 
@@ -134,7 +134,7 @@ export default function searchpage(props){
 
                 
                     
-                ))
+                )):<p className="text-white w-full h-full text-center py-60 ">No shows with this keyword yet</p>)
             }
             </div>
            
