@@ -42,11 +42,11 @@ export default function mylist(){
      
     
     useEffect(()=>{
-        Setcompleted(new Map(JSON.parse(localStorage.getItem('Completed'))))
-        Setplan(new Map(JSON.parse(localStorage.getItem('PlanToWatch'))))
-        Setwatching(new Map(JSON.parse(localStorage.getItem('Watching'))))
-        Setonhold(new Map(JSON.parse(localStorage.getItem('OnHold'))))
-        Setdropped(new Map(JSON.parse(localStorage.getItem('Dropped'))))
+        Setcompleted(JSON.parse(localStorage.getItem('Completed')).reverse())
+        Setplan(JSON.parse(localStorage.getItem('PlanToWatch')).reverse())
+        Setwatching(JSON.parse(localStorage.getItem('Watching')).reverse())
+        Setonhold(JSON.parse(localStorage.getItem('OnHold')).reverse())
+        Setdropped(JSON.parse(localStorage.getItem('Dropped')).reverse())
         console.log('completed map', completedmap)
         if(sessionStorage.getItem('activetab')==undefined || sessionStorage.getItem('activetab')==null){
             Setactivetab('Plan To Watch')
@@ -77,7 +77,7 @@ export default function mylist(){
             </TabsList>
             <TabsContent className='relative top-10 lg:grid  lg:grid-cols-2 w-screen lg:grid-rows' value="Plan To Watch">
             {isloading? <p>Loading please wait</p>:
-               planmap.size!=0?(Array.from(planmap).map(([key, value]) =>(
+               planmap.size!=0?(planmap.map(([key, value]) =>(
                         <Link onClick={scrollupdater}   to={'/mylist/Plan To Watch/'+value.mal_id}>
                             
                             <Horizontalcard className='' key={value.mal_id} 
@@ -96,7 +96,7 @@ export default function mylist(){
             </TabsContent>
             <TabsContent className='relative top-10 lg:grid lg:grid-cols-2 w-screen lg:grid-rows' value="Completed">
             {isloading? <p>Loading please wait</p>:
-               completedmap.size!=0?(Array.from(completedmap).map(([key, value]) =>(
+               completedmap.size!=0?(completedmap.map(([key, value]) =>(
                         <Link  onClick={scrollupdater} to={'/mylist/Completed/'+value.mal_id}>
                             
                             <Horizontalcard   key={value.mal_id} 
@@ -115,7 +115,7 @@ export default function mylist(){
             </TabsContent>
             <TabsContent className='relative top-10 bg-black  lg:grid lg:grid-cols-2 w-screen lg:grid-rows' value="Watching">
             {isloading? <p>Loading please wait</p>:
-                watchinmap.size!=0?(Array.from(watchinmap).map(([key, value]) =>(
+                watchinmap.size!=0?(watchinmap.map(([key, value]) =>(
                         <Link onClick={scrollupdater} to={'/mylist/Watching/'+value.mal_id}>
                             
                             <Horizontalcard   key={value.mal_id} 
@@ -134,7 +134,7 @@ export default function mylist(){
             </TabsContent>
             <TabsContent className='relative top-10 lg:grid lg:grid-cols-2 w-screen lg:grid-rows' value="On Hold">
             {isloading? <p>Loading please wait</p>:
-               onholdmap.size!=0?(Array.from(onholdmap).map(([key, value]) =>(
+               onholdmap.size!=0?(onholdmap.map(([key, value]) =>(
                         <Link onClick={scrollupdater} to={'/mylist/On Hold/'+value.mal_id}>
                             
                             <Horizontalcard   key={value.mal_id} 
@@ -153,7 +153,7 @@ export default function mylist(){
             </TabsContent>
             <TabsContent className='relative top-10 lg:grid lg:grid-cols-2 w-screen lg:grid-rows' value="Dropped">
             {isloading? <p>Loading please wait</p>:
-               droppedmap.size!=0?(Array.from(droppedmap).map(([key, value]) =>(
+               droppedmap.size!=0?(droppedmap.map(([key, value]) =>(
                         <Link onClick={scrollupdater} to={'/mylist/Dropped/'+value.mal_id}>
                             
                             <Horizontalcard   key={value.mal_id} 
