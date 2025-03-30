@@ -23,7 +23,27 @@ function home() {
     sessionStorage.removeItem("animedatasearch")
     sessionStorage.removeItem("lastupdatetimesearch")
     sessionStorage.setItem('activetab','Plan To Watch')
- 
+
+    if(localStorage.getItem('Watching')==null){
+      const Watching = new Map()
+      localStorage.setItem('Watching',JSON.stringify([...Watching]))
+  }
+  if(localStorage.getItem('Completed')==null){
+    const Completed = new Map()
+    localStorage.setItem('Completed',JSON.stringify([...Completed]))
+}
+    if(localStorage.getItem('PlanToWatch')==null){
+      const PlanToWatch = new Map()
+      localStorage.setItem('PlanToWatch',JSON.stringify([...PlanToWatch]))
+  }
+    if(localStorage.getItem('OnHold')==null){
+      const OnHold = new Map()
+      localStorage.setItem('OnHold',JSON.stringify([...OnHold]))
+  }
+    if(localStorage.getItem('Dropped')==null){
+      const Dropped = new Map()
+      localStorage.setItem('Dropped',JSON.stringify([...Dropped]))
+  }
     useEffect(()=>{
       
      window.addEventListener('keydown',enterhandler)

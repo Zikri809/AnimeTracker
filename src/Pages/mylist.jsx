@@ -75,9 +75,11 @@ export default function mylist(){
               <TabsTrigger  onClick={scrollreset} className='text-white    text-base data-[state=active]:bg-gray-700  data-[state=active]:rounded-b-none data-[state=active]:text-white' value="On Hold">On Hold</TabsTrigger>
               <TabsTrigger  onClick={scrollreset} className=' text-white    text-base data-[state=active]:bg-gray-700  data-[state=active]:rounded-b-none data-[state=active]:text-white' value="Dropped">Dropped</TabsTrigger>
             </TabsList>
-            <TabsContent className='relative top-10 lg:grid  lg:grid-cols-2 w-screen lg:grid-rows' value="Plan To Watch">
+            <TabsContent className='relative top-10 ' value="Plan To Watch">
             {isloading? <p>Loading please wait</p>:
-               planmap.size!=0?(planmap.map(([key, value]) =>(
+            (planmap.length!=0?<div className="lg:grid  lg:grid-cols-2 w-screen lg:grid-rows">
+                {
+                     (planmap.map(([key, value]) =>(
                         <Link onClick={scrollupdater}   to={'/mylist/Plan To Watch/'+value.mal_id}>
                             
                             <Horizontalcard className='' key={value.mal_id} 
@@ -91,12 +93,17 @@ export default function mylist(){
                             ranking={value.popularity}
                             genre={value.genres}/>
                         </Link>
-               ))):<p className="text-white w-full h-full text-center py-60 ">No shows in record yet</p>
+               )))
+                }
+            </div>:<p className="text-white w-full h-full text-center py-60 ">No shows in record yet</p>)
+              
             }
             </TabsContent>
-            <TabsContent className='relative top-10 lg:grid lg:grid-cols-2 w-screen lg:grid-rows' value="Completed">
+            <TabsContent className='relative top-10 ' value="Completed">
             {isloading? <p>Loading please wait</p>:
-               completedmap.size!=0?(completedmap.map(([key, value]) =>(
+           (completedmap.length!=0? <div className="lg:grid lg:grid-cols-2 w-screen lg:grid-rows">
+                {
+                     (completedmap.map(([key, value]) =>(
                         <Link  onClick={scrollupdater} to={'/mylist/Completed/'+value.mal_id}>
                             
                             <Horizontalcard   key={value.mal_id} 
@@ -110,12 +117,17 @@ export default function mylist(){
                             ranking={value.popularity}
                             genre={value.genres}/>
                         </Link>
-               ))):<p className="text-white w-full h-full text-center py-60 ">No shows in record yet</p>
+               )))
+                }
+            </div>:<p className="text-white w-full h-full text-center py-60 ">No shows in record yet</p>)
+              
             }
             </TabsContent>
-            <TabsContent className='relative top-10 bg-black  lg:grid lg:grid-cols-2 w-screen lg:grid-rows' value="Watching">
+            <TabsContent className='relative top-10 bg-black  ' value="Watching">
             {isloading? <p>Loading please wait</p>:
-                watchinmap.size!=0?(watchinmap.map(([key, value]) =>(
+            ( watchinmap.length!=0?<div className="lg:grid lg:grid-cols-2 w-screen lg:grid-rows">
+                {
+                    (watchinmap.map(([key, value]) =>(
                         <Link onClick={scrollupdater} to={'/mylist/Watching/'+value.mal_id}>
                             
                             <Horizontalcard   key={value.mal_id} 
@@ -129,12 +141,17 @@ export default function mylist(){
                             ranking={value.popularity}
                             genre={value.genres}/>
                         </Link>
-               ))):<p className="text-white w-full h-full text-center py-60 ">No shows in record yet</p>
+               )))
+                }
+            </div>:<p className="text-white w-full h-full text-center py-60 ">No shows in record yet</p>)
+               
             }
             </TabsContent>
-            <TabsContent className='relative top-10 lg:grid lg:grid-cols-2 w-screen lg:grid-rows' value="On Hold">
+            <TabsContent className='relative top-10 ' value="On Hold">
             {isloading? <p>Loading please wait</p>:
-               onholdmap.size!=0?(onholdmap.map(([key, value]) =>(
+            (onholdmap.length!=0?<div className="lg:grid lg:grid-cols-2 w-screen lg:grid-rows">
+                {
+                     (onholdmap.map(([key, value]) =>(
                         <Link onClick={scrollupdater} to={'/mylist/On Hold/'+value.mal_id}>
                             
                             <Horizontalcard   key={value.mal_id} 
@@ -148,12 +165,18 @@ export default function mylist(){
                             ranking={value.popularity}
                             genre={value.genres}/>
                         </Link>
-               ))):<p className="text-white w-full h-full text-center py-60 ">No shows in record yet</p>
+               )))
+                }
+            </div>:<p className="text-white w-full h-full text-center py-60 ">No shows in record yet</p>)
+              
             }
             </TabsContent>
-            <TabsContent className='relative top-10 lg:grid lg:grid-cols-2 w-screen lg:grid-rows' value="Dropped">
+            <TabsContent className='relative top-10 ' value="Dropped">
             {isloading? <p>Loading please wait</p>:
-               droppedmap.size!=0?(droppedmap.map(([key, value]) =>(
+            (droppedmap.length!=0?
+            <div className="lg:grid lg:grid-cols-2 w-screen lg:grid-rows">
+                {
+                     (droppedmap.map(([key, value]) =>(
                         <Link onClick={scrollupdater} to={'/mylist/Dropped/'+value.mal_id}>
                             
                             <Horizontalcard   key={value.mal_id} 
@@ -167,7 +190,11 @@ export default function mylist(){
                             ranking={value.popularity}
                             genre={value.genres}/>
                         </Link>
-               ))):<p className="text-white w-full h-full text-center py-60 ">No shows in record yet</p>
+                         )))
+                }
+            </div>:<p className="text-white w-full h-full text-center py-60 ">No shows in record yet</p>)
+              
+              
             }
             </TabsContent>
            

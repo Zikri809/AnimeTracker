@@ -109,7 +109,7 @@ export default function searchpage(props){
     return(
        <body   className='relative top-0 left-0 font-poppins overflow-x-hidden m-0   w-screen h-auto  bg-black text-white font-poppins ml-1  antialiased' >
             <Navbar searchtitle={params.title}/>
-            { isLoading?<p className="text-white w-full h-full text-center px-50 py-60 ">Loading, please wait....</p>:<div  className='relative top-18 lg:grid lg:grid-cols-2 w-screen lg:grid-rows '>
+            { isLoading?<p className="text-white w-full h-full text-center py-60 ">Loading, please wait....</p>:<div  className='relative top-18 lg:grid lg:grid-cols-2 w-screen lg:grid-rows '>
             {
              ( animearr.length!=0?(animearr.map((element) =>(
               

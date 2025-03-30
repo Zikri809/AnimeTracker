@@ -78,6 +78,9 @@ export default function trackingform(props){
         }
         toast.success('Show has been deleted from watch list')
         Setadded(false)
+        setTimeout(() => {
+            navigate(!id.hasOwnProperty('section')?(id.hasOwnProperty('title')?'/search/'+id.title:(id.hasOwnProperty('mylist_tab')?'/mylist':'/')):('/'+id.section))
+        }, 1000);
     }
 
     useEffect(()=>{
