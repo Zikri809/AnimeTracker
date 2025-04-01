@@ -29,9 +29,17 @@ export default function mylist(){
         }
     },[isloading])
 
-    function scrollreset(){
+    function scrollreset(e){
        console.log('reset triggered')
         sessionStorage.setItem('mylistscroll',JSON.stringify(0))
+        const scrollresult = JSON.parse(sessionStorage.getItem('mylistscroll'))
+        console.log('retrieve scroll position')
+            if (scrollresult!=null){
+                console.log('scroll result ',scrollresult)
+                scrollTo({ left: 0, top: scrollresult,  })
+            }
+        e.target.scrollIntoView({behavior: "smooth",inline: "center"})
+        console.log(e.target)
     }
     function scrollupdater(){
         console.log('scroll y' , window.scrollY)
@@ -69,7 +77,7 @@ export default function mylist(){
       
              <Tabs defaultValue="Plan To Watch" value={activetab} onValueChange={handletabchange} className="relative w-full top-20  bg-black">
             <TabsList style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}} className='no-scrollbar::-webkit-scrollbar w-full text-xl  z-2 fixed touch-auto  pb-0 rounded-none bg-black text-black border-b-1 overflow-auto border-gray-600'>
-              <TabsTrigger  onClick={scrollreset} className='ml-16 sm:ml-4  text-base data-[state=active]:bg-gray-700  data-[state=active]:rounded-b-none data-[state=active]:text-white text-white active:bg-black ' value="Plan To Watch">Plan To Watch</TabsTrigger>
+              <TabsTrigger  onClick={scrollreset} className='ml-16 sm:ml-4 w-300  text-base data-[state=active]:bg-gray-700  data-[state=active]:rounded-b-none data-[state=active]:text-white text-white active:bg-black ' value="Plan To Watch">Plan To Watch</TabsTrigger>
               <TabsTrigger  onClick={scrollreset} className='text-white    text-base  data-[state=active]:bg-gray-700 data-[state=active]:rounded-b-none data-[state=active]:text-white' value="Completed">Completed</TabsTrigger>
               <TabsTrigger  onClick={scrollreset} className='text-white    text-base data-[state=active]:bg-gray-700  data-[state=active]:rounded-b-none data-[state=active]:text-white' value="Watching">Watching</TabsTrigger>
               <TabsTrigger  onClick={scrollreset} className='text-white    text-base data-[state=active]:bg-gray-700  data-[state=active]:rounded-b-none data-[state=active]:text-white' value="On Hold">On Hold</TabsTrigger>

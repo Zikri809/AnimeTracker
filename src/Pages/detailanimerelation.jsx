@@ -35,7 +35,7 @@ export default function detailanime(props){
     },[])
     console.log('id',id)
     return (
-        <body className='relative overflow-x-hidden top-0 left-0   m-0   w-screen h-[1500px]  bg-black text-white font-poppins my-1 antialiased' >
+        <body className='relative overflow-x-hidden top-0 left-0   m-0   w-screen h-auto  bg-black text-white font-poppins my-1 antialiased' >
             {isloading? <p>Loading</p>: <Navbar className='' sectionTitle={animeinfo.title}/>}
             <div className='relative top-20 flex  flex-col '>
                 {
