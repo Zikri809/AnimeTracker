@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
 import Animecard from './animecard'
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import Cardskeleton from "./animecardskelaton";
 import { Card, CardContent } from "@/components/ui/card"
 import { Link } from "react-router-dom";
@@ -13,16 +13,17 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { QueryClient, useQuery } from "@tanstack/react-query";
+import { Season_context } from '@/App';
 function ThisseasonSec(){
     const [animearr, setAnimearr] = useState([]);
-   
+    const seasoninfo = useContext(Season_context)
    
     
    
         
         async function fetchapi(){
             try{
-                const response = await fetch('https://api.jikan.moe/v4/seasons/now?continuing=true')
+                const response = await fetch('https://api.jikan.moe/v4/seasons/'+seasoninfo.current_year+'/'+seasoninfo.current_season+'?')
                 const apifeedback = await response.json()
                 const top24 = apifeedback.data.slice(0,24)
                 let tempfilteredSetid =  new Set()

@@ -107,7 +107,7 @@ upcoming_year = upcoming_year_funct(seasons,current_season,current_year)
 },
 {
   path: '/morethiseseason',
-  element: <More storageidentifier='morethisseason' storagetimeidentifier='morethisseasontime' section='This Season' sectionurl='morethiseseason' apilink='https://api.jikan.moe/v4/seasons/now?continuing=true'/>
+  element: <More storageidentifier='morethisseason' storagetimeidentifier='morethisseasontime' section='This Season' sectionurl='morethiseseason' apilink={'https://api.jikan.moe/v4/seasons/'+current_year+'/'+current_season+'?'}/>
 },
 {
   path:'/moreupcoming',
@@ -190,7 +190,7 @@ upcoming_year = upcoming_year_funct(seasons,current_season,current_year)
 
   return (
   <>
-  <Season_context.Provider value={{past_season,past_year,upcoming_season,upcoming_year}}>
+  <Season_context.Provider value={{current_year,current_season,past_season,past_year,upcoming_season,upcoming_year}}>
   <QueryClientProvider client={queryclient}>
     
       <RouterProvider router={router}/>
