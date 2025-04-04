@@ -17,6 +17,7 @@ export default defineConfig({
         short_name: 'AniTracker',
         description: 'A web app by Zikri',
         theme_color: '#000000',
+        background_color: '#000000',
         icons: [
           {
             src: '/anitracker-high-resolution-logo-192.webp',
