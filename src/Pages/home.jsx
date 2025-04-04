@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useEffect, useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import checkadder from '@/Utility/checkadder.js'
 
 function home() {
   const searchbar = useRef([])
@@ -23,6 +24,8 @@ function home() {
     sessionStorage.removeItem("animedatasearch")
     sessionStorage.removeItem("lastupdatetimesearch")
     sessionStorage.setItem('activetab','Plan To Watch')
+
+    checkadder()
 
     if(localStorage.getItem('Watching')==null){
       const Watching = new Map()
