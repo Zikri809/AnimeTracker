@@ -8,8 +8,15 @@ import {
   } from "@/components/ui/card"
   import { Button } from "@/components/ui/button"
   import React from "react"
+  import { CheckCheck } from 'lucide-react';
 
 function animecardhorizontal(props){
+    const plantowatchmap = new Map(JSON.parse(localStorage.getItem('PlanToWatch')))
+    const watchingmap = new Map(JSON.parse(localStorage.getItem('Watching')))
+    const  completedmap = new Map(JSON.parse(localStorage.getItem('Completed')))
+    const onholdmap = new Map(JSON.parse(localStorage.getItem('OnHold')))
+    const droppedmap = new Map(JSON.parse(localStorage.getItem('Dropped')))
+    
     class object{
         constructor(name){
             this.name=name
@@ -32,10 +39,18 @@ function animecardhorizontal(props){
             <CardContent className='flex p-0 flex-row gap-5 w-screen items-center'>
                 <img className="rounded-sm h-55 w-35 sm:w-40 object-cover" src={props.image}></img>
                 <div className="flex flex-col items-start h-55 w-80 overflow-hidden sm:overflow-visible justify-between">
-                {props.status=='Finished Airing'?<Button variant="outline" className='bg-black border-1 font-medium text-sm text-green-500 border-gray-700' >{props.status}</Button>:
-                (props.status=='Currently Airing'?<Button variant="outline" className='bg-black border-1 font-medium text-sm text-blue-400 border-gray-700' >{props.status}</Button>:
-                    <Button variant="outline" className='bg-black border-1 font-medium text-sm text-red-400 border-gray-700' >{props.status}</Button>
-                )}
+                    <div className="flex flex-row gap-1">
+                    {props.status=='Finished Airing'?<Button variant="outline" className='bg-black border-1 font-medium text-sm text-green-500 border-gray-700' >{props.status}</Button>:
+                    (props.status=='Currently Airing'?<Button variant="outline" className='bg-black border-1 font-medium text-sm text-blue-400 border-gray-700' >{props.status}</Button>:
+                        <Button variant="outline" className='bg-black border-1 font-medium text-sm text-red-400 border-gray-700' >{props.status}</Button>
+                    )}
+                    {
+                        (plantowatchmap.has(props.mal_id) || watchingmap.has(props.mal_id) || completedmap.has(props.mal_id) || onholdmap.has(props.mal_id) || droppedmap.has(props.mal_id))?
+                        <Button variant="outline" className='bg-black border-1 font-medium text-sm text-blue-300 border-gray-700' ><CheckCheck size={32} /></Button>:<p></p>
+                    }
+
+                    </div>
+                
                 <div className="flex text-sm flex-row gap-2">
                     <p className="capitalize">{props.season}</p>
                     <p>{props.episodes==null ? '' : props.episodes+' episodes'} </p>

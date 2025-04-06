@@ -124,15 +124,15 @@ function more(props){
         console.log('params is ',params)
     return(
        <body   className='relative top-0 left-0 font-poppins overflow-x-hidden m-0   w-screen h-auto  bg-black text-white font-poppins ml-1  antialiased' >
-            {  }
+         
             <Morenavabr sectionTitle={props.section}/>
-            <div  className='relative top-18 lg:grid lg:grid-cols-2 w-screen lg:grid-rows '>
-           
-            {
-               (animearr.map((element) =>(
+             { isLoading?<div className=" w-screen h-screen flex flex-row justify-center items-center "> <div class="loader"></div></div>:
+             
+             (animearr.map((element) =>(
                 <Link  to={'/'+props.sectionurl+'/'+element.mal_id}>
                     
                     <Horizontalcard  ref={cardref} key={element.mal_id} 
+                    mal_id={element.mal_id}
                     image={element.images.webp.large_image_url} 
                     status= {element.status}
                     season={element.season ==null ? ' ':element.season + ' '+ element.year }
@@ -149,7 +149,12 @@ function more(props){
                 
                     
                 ))
-            }
+             }
+            <div  className='relative top-18 lg:grid lg:grid-cols-2 w-screen lg:grid-rows '>
+           
+            
+              
+            
             </div>
            
            
