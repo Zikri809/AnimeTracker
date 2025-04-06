@@ -42,7 +42,7 @@ function more(props){
                         console.log('condition fullfiled',currentpage)
                         isaddedarr.current = false
                         isupdated.current = true
-                        setLoading(true)
+                       
                         window.removeEventListener('scroll', scrollhandler)
                        
                     }
