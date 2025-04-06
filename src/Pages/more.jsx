@@ -128,7 +128,10 @@ function more(props){
             <Morenavabr sectionTitle={props.section}/>
              { isLoading?<div className=" w-screen h-screen flex flex-row justify-center items-center "> <div class="loader"></div></div>:
              
-             (animearr.map((element) =>(
+             (
+                <div  className='relative top-18 lg:grid lg:grid-cols-2 w-screen lg:grid-rows '>
+           
+            {animearr.map((element) =>(
                 <Link  to={'/'+props.sectionurl+'/'+element.mal_id}>
                     
                     <Horizontalcard  ref={cardref} key={element.mal_id} 
@@ -144,18 +147,14 @@ function more(props){
                     genre={element.genres}/>
                 </Link>
                 
-               )
-
-                
-                    
-                ))
-             }
-            <div  className='relative top-18 lg:grid lg:grid-cols-2 w-screen lg:grid-rows '>
-           
-            
+               )   
+                )
+            }
               
-            
             </div>
+             )
+             }
+            
            
            
 
