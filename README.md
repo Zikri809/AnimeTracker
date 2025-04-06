@@ -96,7 +96,7 @@ MIT © [Zikri809](https://github.com/Zikri809).
 
 <div align="center">
   
-  [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000?style=for-the-badge&logo=vercel)](https://animetracker-zikri809.vercel.app) 
+  [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000?style=for-the-badge&logo=vercel)](https://anime-tracker-cyan-six.vercel.app/) 
   [![Report Issue](https://img.shields.io/badge/Report_Issue-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/Zikri809/AnimeTracker/issues)
   
   📅 **Last Updated**: 2025-03-31
