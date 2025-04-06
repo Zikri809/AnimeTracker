@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Nav from '@/ComponentsSelf/navbar.jsx'
 import LastSeason from '@/ComponentsSelf/LastSeason.jsx'
 import { CarouselDemo } from '@/ComponentsSelf/carousel.jsx'
@@ -9,6 +9,8 @@ import { Input } from "@/components/ui/input"
 import { useEffect, useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import checkadder from '@/Utility/checkadder.js'
+import validator from '@/Utility/validation.js'
+import { Season_context } from '@/App'
 
 function home() {
   const searchbar = useRef([])
@@ -19,13 +21,14 @@ function home() {
     const linkref =  useRef(null) 
     const [searchval, Setsearchval] = useState(' ')
     const [text, Settext] = useState('')
+      const seasoninfo = useContext(Season_context)
     let navigate = useNavigate()
     sessionStorage.setItem('morescroll',JSON.stringify(0))
     sessionStorage.removeItem("animedatasearch")
     sessionStorage.removeItem("lastupdatetimesearch")
     sessionStorage.setItem('activetab','Plan To Watch')
 
-    checkadder()
+   
 
     if(localStorage.getItem('Watching')==null){
       const Watching = new Map()
@@ -87,7 +90,15 @@ function home() {
       navbutton.addEventListener('click',clickhandler)
       button.addEventListener('click',clickhandler)
   },[searchval])
-
+  
+  useEffect(()=>{
+    checkadder(seasoninfo).then(
+      setTimeout(validator, 2000)
+    )
+    
+  },[])
+  
+  
   return (
    <body className='relative top-0 left-0  overflow-x-clip m-0   w-[100%] h-[1500px]  bg-black text-white font-poppins my-1 antialiased' >
         <Nav searchbarref={navsearchref}   searchbuttonref={navbuttonref}/>

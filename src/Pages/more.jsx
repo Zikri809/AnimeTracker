@@ -3,6 +3,7 @@ import Horizontalcard from '@/ComponentsSelf/animecardhorizontal'
 import { useState, useEffect, useRef } from "react";
 import { Link, useParams } from 'react-router-dom';
 import { useWindowScroll } from "@uidotdev/usehooks";
+import validator from '@/Utility/validation.js'
 
 
 function more(props){
@@ -15,7 +16,11 @@ function more(props){
         const isaddedarr = useRef(false)
         let params = useParams()
         
+        useEffect(()=>{
 
+              setTimeout(validator, 2000)
+            
+          },[])
       
         useEffect(()=>{
             if(!isLoading){

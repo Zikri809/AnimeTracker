@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Horizontalcard from '@/ComponentsSelf/animecardhorizontal'
 import { Link } from "react-router-dom"
 import { useWindowScroll } from "@uidotdev/usehooks"
+import validator from '@/Utility/validation.js'
 
 export default function mylist(){
     const [planmap , Setplan] = useState()
@@ -16,6 +17,9 @@ export default function mylist(){
     const [activetab, Setactivetab] = useState('Plan To Watch')
 
      
+    useEffect(()=>{
+               setTimeout(validator, 2000)
+               },[]) 
     useEffect(()=>{
         if(!isloading){
             const scrollresult = JSON.parse(sessionStorage.getItem('mylistscroll'))

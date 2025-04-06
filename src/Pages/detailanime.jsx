@@ -5,6 +5,7 @@ import { useParams, Link } from 'react-router-dom'
 import Relation from '@/ComponentsSelf/min'
 import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react';
+import validator from '@/Utility/validation.js'
 
 export default function detailanime(props){
     const [animeinfo, Setanimeinfo] = useState([])
@@ -13,7 +14,9 @@ export default function detailanime(props){
     if(id.hasOwnProperty('mylist_tab')==true){
         sessionStorage.setItem('activetab',id.mylist_tab)
    }
-
+   useEffect(()=>{
+    setTimeout(validator, 2000)
+    },[])
     useEffect(()=>{
         async function fetchapi(){
             try{

@@ -24,6 +24,7 @@ function ThisseasonSec(){
         async function fetchapi(){
             try{
                 const response = await fetch('https://api.jikan.moe/v4/seasons/'+seasoninfo.current_year+'/'+seasoninfo.current_season+'?')
+                if (!response.ok) throw new Error(`HTTP ${response.status}`)
                 const apifeedback = await response.json()
                 const top24 = apifeedback.data.slice(0,24)
                 let tempfilteredSetid =  new Set()
@@ -48,7 +49,6 @@ function ThisseasonSec(){
                 
             }
             catch(error){
-                fetchapi()
                 console.error(error)
             }
         }

@@ -4,6 +4,7 @@ import Horizontalcard from '@/ComponentsSelf/animecardhorizontal'
 import { useState, useEffect, useRef } from "react";
 import { Link,} from 'react-router-dom';
 import { useWindowScroll } from "@uidotdev/usehooks";
+import validator from '@/Utility/validation.js'
 
 export default function searchpage(props){
     const [animearr, setAnimearr] = useState([]);
@@ -24,7 +25,9 @@ export default function searchpage(props){
             }
         },[isLoading])
 
-    
+        useEffect(()=>{
+            setTimeout(validator, 2000)
+            },[])
         useEffect(()=>{
             function scrollhandler(){   
                //console.log( window.innerHeight + Math.ceil(window.scrollY)>=document.body.offsetHeight - 10 )
