@@ -7,8 +7,8 @@ export default  function validator(){
         idtobevalidated.forEach((mal_id,index)=>{
             apifetch(mal_id)
              
-            console.log('The storage name is ',storagename, ' slicedarr is ', idtobevalidated.slice(0,idtobevalidated.length-index-1))
-           sessionStorage.setItem('needstocheck'+storagename, JSON.stringify(idtobevalidated.slice(0,idtobevalidated.length-index-1) ))
+            console.log('The storage name is ',storagename, ' slicedarr is ', idtobevalidated.slice(index+1,idtobevalidated.length))
+           sessionStorage.setItem('needstocheck'+storagename, JSON.stringify(idtobevalidated.slice(index+1,idtobevalidated.length) ))
             //console.log('finished calling apifetch function')
         })
         async function apifetch(mal_id){
