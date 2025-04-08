@@ -6,6 +6,9 @@ import Relation from '@/ComponentsSelf/min'
 import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react';
 import validator from '@/Utility/validation.js'
+import { Skeleton } from "@/components/ui/skeleton"
+import Cardskeleton from '@/ComponentsSelf/animecardheader-skeleton.jsx'
+
 
 export default function detailanime(props){
     const [animeinfo, Setanimeinfo] = useState([])
@@ -39,10 +42,20 @@ export default function detailanime(props){
     console.log('id',id)
     return (
         <body className='relative overflow-x-hidden top-0 left-0   m-0   w-screen h-auto  bg-black text-white font-poppins my-1 antialiased' >
-            {isloading? <p>Loading</p>: <Navbar className='' sectionTitle={animeinfo.title}/>}
+            {isloading? 
+            <nav className='flex flex-row justify-between items-center px-4 top-0 fixed bg-black z-2 w-full h-20'>
+                <div className='flex flex-row gap-3'>
+                    <Skeleton className='h-10 bg-zinc-700 w-10 rounded-md '/>
+                    <Skeleton className='h-10 bg-zinc-700 sm:w-120 w-70 '/>
+                </div>
+               
+                <Skeleton className='h-10 w-10 bg-zinc-700 rounded-md '/>
+            </nav>
+            : <Navbar className='' sectionTitle={animeinfo.title}/>}
             <div className='relative top-20 flex  flex-col '>
                 {
-                    isloading? <p>loading....</p>:
+                    isloading? <Cardskeleton></Cardskeleton>
+                    :
                     <Horizontalcard  
                     key={animeinfo.mal_id} 
                     image={animeinfo.images.webp.large_image_url} 
@@ -59,7 +72,7 @@ export default function detailanime(props){
                 }
                  {animeinfo.status=='Currently Airing'||animeinfo.status=='Finished Airing'?<div className='px-6 py-4 border-none justify-around mb-4 text-white items-center bg-neutral-900 flex flex-row border-gray-600  '>
                     {
-                        isloading?<p>loading...</p>:
+                        isloading?<></>:
                         <>
                             <span>{animeinfo.duration}</span>
                             {
@@ -79,33 +92,48 @@ export default function detailanime(props){
                        
                     }
                   
-                </div>:<p className='hidden'></p>}
+                </div>:<></>}
                 <div className='px-6 border-b-1 border-gray-600 pb-5 '>
-                    <h4 className='text-start font-bold text-2xl mb-5 font-poppins inline-block border-b-1 pb-1 border-white'>Synopsis</h4>
-                <p className='text-justify'>{animeinfo.synopsis}</p>
+                    {isloading?<Skeleton className= 'bg-zinc-700 w-20 h-8 mb-5  inline-block  pb-1'></Skeleton>:<h4 className='text-start font-bold text-2xl mb-5 font-poppins inline-block border-b-1 pb-1 border-white'>Synopsis</h4>}
+                {isloading?
+                <div className='flex-col flex gap-2'>
+                 <Skeleton className='w-[90%] bg-zinc-700 h-8'></Skeleton>
+                 <Skeleton className='w-[90%] bg-zinc-700 h-8'></Skeleton>
+                 <Skeleton className='w-[90%] bg-zinc-700 h-8'></Skeleton>
+                 <Skeleton className='w-[90%] bg-zinc-700 h-8'></Skeleton>
+                </div>
+               :<p className='text-justify'>{animeinfo.synopsis}</p>}
                 </div>
               
                {
-                isloading ? <p>Loading....</p>:(
+                isloading ? <Skeleton className=' bg-zinc-700  my-4 mx-6 sm:mx-auto sm:w-200 aspect-video'></Skeleton>:(
                     <>
                         <iframe align='center' className='border-1 border-gray-700 my-4 mx-6 sm:mx-auto sm:w-200 aspect-video' src={animeinfo.trailer.embed_url}></iframe>
                     </>
                 )
                }
                <div className='bg-neutral-900 px-5 py-4 flex flex-col gap-10 '>
-                    <div className=' flex flex-col '>
-                        <p className='text-gray-400'>English</p>
-                        <p className='text-left'>{animeinfo.title_english}</p>
+                    <div className=' flex flex-col justify-center gap-2 '>
+                        {isloading?
+                        <>
+                         <Skeleton className='h-8 bg-zinc-700 w-30 rounded-md '/>
+                         <Skeleton className='h-8 bg-zinc-700 w-70 rounded-md '/>
+                        </>
+                        :<>
+                            <p className='text-gray-400'>English</p>
+                            <p className='text-left'>{animeinfo.title_english}</p>
+                        </>
+                            }
                     </div>
                     <div className='flex flex-row gap-10 '>
                         <div className='flex flex-col gap-4'>
                             <div>
                                 <p className='text-gray-400'>Source</p>
-                                <p>{animeinfo.source}</p>
+                               { isloading? <Skeleton className='h-8 bg-zinc-700 w-30 rounded-md '/>:<p>{animeinfo.source}</p>}
                             </div>
                             <div>
                             <p className='text-gray-400'>Studio</p>
-                            {isloading? <p>loading...</p>:
+                            {isloading? <Skeleton className='h-8 bg-zinc-700 w-30 rounded-md '/>:
                             (
                                 animeinfo.studios.map((object)=>{
                                     return <p>{object.name}</p>
@@ -116,17 +144,17 @@ export default function detailanime(props){
                             </div>
                             <div>
                                 <p className='text-gray-400'>Rating</p>
-                                <p>{animeinfo.rating}</p>
+                                {isloading? <Skeleton className='h-8 bg-zinc-700 w-30 rounded-md '/>:<p>{animeinfo.rating}</p>}
                             </div>
                         </div>
                         <div className='flex flex-col gap-4'>
                             <div>
                                 <p className='text-gray-400'>Season</p>
-                                <p>{animeinfo.source}</p>
+                                {isloading? <Skeleton className='h-8 bg-zinc-700 w-30 rounded-md '/>:<p>{animeinfo.source}</p>}
                             </div>
                             <div>
                             <p className='text-gray-400'>Aired</p>
-                            {isloading? <p>loading...</p>:
+                            {isloading?  <Skeleton className='h-8 bg-zinc-700 w-30 rounded-md '/>:
                             (
                                 animeinfo.aired.string
                             )
@@ -135,7 +163,7 @@ export default function detailanime(props){
                             <div>
                                 <p className='text-gray-400'>Licensor</p>
                                 {
-                                    isloading?<p>Loading....</p>:
+                                    isloading? <Skeleton className='h-8 bg-zinc-700 w-30 rounded-md '/>:
                                     (animeinfo.liscensor == undefined ? <p>Unkown</p> :
                                        (
                                        animeinfo.liscensor.map((object)=>{
