@@ -4,7 +4,7 @@
   <h1>🎌 AnimeTracker</h1>
   <p><i>A sleek React.js app to track anime progress using Jikan API, styled with Tailwind CSS.</i></p>
 
-  ![Demo](https://via.placeholder.com/1200x600/1E293B/FFFFFF?text=AnimeTracker+Demo) *(Replace with actual screenshot)*  
+  ![Demo](https://via.placeholder.com/1200x600/1E293B/FFFFFF?text=AnimeTracker+Demo)
   [![Vercel Deployment](https://img.shields.io/badge/Live%20Demo-Vercel-000?style=flat&logo=vercel)](https://anime-tracker-cyan-six.vercel.app/)  
   [![Jikan API](https://img.shields.io/badge/API-Jikan-FF6F61?style=flat)](https://docs.api.jikan.moe/) 
 </div>
