@@ -92,7 +92,7 @@ export default function mylist(){
             (planmap.length!=0?<div className="lg:grid  lg:grid-cols-2 w-screen lg:grid-rows">
                 {
                      (planmap.map(([key, value]) =>(
-                        <Link onClick={scrollupdater}   to={'/mylist/Plan To Watch/'+value.mal_id}>
+                        <Link viewTransition onClick={scrollupdater}   to={'/mylist/Plan To Watch/'+value.mal_id}>
                             
                             <Horizontalcard className='' key={value.mal_id} 
                             image={value.images.webp.large_image_url} 
@@ -116,7 +116,7 @@ export default function mylist(){
            (completedmap.length!=0? <div className="lg:grid lg:grid-cols-2 w-screen lg:grid-rows">
                 {
                      (completedmap.map(([key, value]) =>(
-                        <Link  onClick={scrollupdater} to={'/mylist/Completed/'+value.mal_id}>
+                        <Link viewTransition onClick={scrollupdater} to={'/mylist/Completed/'+value.mal_id}>
                             
                             <Horizontalcard   key={value.mal_id} 
                             image={value.images.webp.large_image_url} 
@@ -140,7 +140,7 @@ export default function mylist(){
             ( watchinmap.length!=0?<div className="lg:grid lg:grid-cols-2 w-screen lg:grid-rows">
                 {
                     (watchinmap.map(([key, value]) =>(
-                        <Link onClick={scrollupdater} to={'/mylist/Watching/'+value.mal_id}>
+                        <Link viewTransition onClick={scrollupdater} to={'/mylist/Watching/'+value.mal_id}>
                             
                             <Horizontalcard   key={value.mal_id} 
                             image={value.images.webp.large_image_url} 
@@ -164,7 +164,7 @@ export default function mylist(){
             (onholdmap.length!=0?<div className="lg:grid lg:grid-cols-2 w-screen lg:grid-rows">
                 {
                      (onholdmap.map(([key, value]) =>(
-                        <Link onClick={scrollupdater} to={'/mylist/On Hold/'+value.mal_id}>
+                        <Link viewTransition onClick={scrollupdater} to={'/mylist/On Hold/'+value.mal_id}>
                             
                             <Horizontalcard   key={value.mal_id} 
                             image={value.images.webp.large_image_url} 
@@ -189,7 +189,7 @@ export default function mylist(){
             <div className="lg:grid lg:grid-cols-2 w-screen lg:grid-rows">
                 {
                      (droppedmap.map(([key, value]) =>(
-                        <Link onClick={scrollupdater} to={'/mylist/Dropped/'+value.mal_id}>
+                        <Link viewTransition onClick={scrollupdater} to={'/mylist/Dropped/'+value.mal_id}>
                             
                             <Horizontalcard   key={value.mal_id} 
                             image={value.images.webp.large_image_url} 

@@ -61,7 +61,7 @@ function UpcomingSec(){
        <div className="my-5">
             <div className="flex flex-row  pl-4  pr-4 mb-2 justify-between items-center">
                 <div className="border-b-2  pb-2"><h4 className=" scroll-m-20 text-xl font-semibold tracking-tight">Upcoming Season</h4> </div>
-                <Link to='/moreupcoming'>
+                <Link viewTransition to='/moreupcoming'>
                     <Button className='bg-black border-gray-500' variant="outline" size="icon"><ChevronRight  /></Button>      
                 </Link>
               
@@ -91,7 +91,7 @@ function UpcomingSec(){
                     
                 )
                          :(querydata?.map((element)=>(
-                            <Link to={'/'+element.mal_id}>
+                            <Link viewTransition to={'/'+element.mal_id}>
                                 <CarouselItem key={element.id} className="pl-2 md:pl-4"> <Animecard title={element.title} link={element.images.webp.large_image_url} year={element.year} rating={element.score} status = {element.status}/></CarouselItem>
                             </Link> 
                          )))

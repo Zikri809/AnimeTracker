@@ -12,6 +12,7 @@ import Mylist from './Pages/mylist.jsx'
 import Detailanimerelation from './Pages/detailanimerelation.jsx'
 
 
+
 export const Season_context = createContext()
 function App() {
 const queryclient = new QueryClient()
@@ -190,6 +191,7 @@ upcoming_year = upcoming_year_funct(seasons,current_season,current_year)
 
   return (
   <>
+  
   <Season_context.Provider value={{current_year,current_season,past_season,past_year,upcoming_season,upcoming_year}}>
   <QueryClientProvider client={queryclient}>
     
@@ -200,6 +202,8 @@ upcoming_year = upcoming_year_funct(seasons,current_season,current_year)
     
   </QueryClientProvider>
   </Season_context.Provider>
+
+  
  
   </>
   )

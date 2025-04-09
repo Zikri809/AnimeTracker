@@ -132,7 +132,7 @@ function more(props){
                 <div  className='relative top-18 lg:grid lg:grid-cols-2 w-screen lg:grid-rows '>
            
             {animearr.map((element) =>(
-                <Link  to={'/'+props.sectionurl+'/'+element.mal_id}>
+                <Link viewTransition to={'/'+props.sectionurl+'/'+element.mal_id}>
                     
                     <Horizontalcard  ref={cardref} key={element.mal_id} 
                     mal_id={element.mal_id}

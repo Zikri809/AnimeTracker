@@ -116,7 +116,7 @@ export default function searchpage(props){
             {
              ( animearr.length!=0?(animearr.map((element) =>(
               
-                    <Link to={'/search/'+params.title+'/'+element.mal_id}>
+                    <Link viewTransition to={'/search/'+params.title+'/'+element.mal_id}>
                          <Horizontalcard key={element.mal_id}
                            mal_id={element.mal_id} 
                     image={element.images.webp.large_image_url} 
