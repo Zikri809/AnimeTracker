@@ -12,6 +12,7 @@ import checkadder from '@/Utility/checkadder.js'
 import validator from '@/Utility/validation.js'
 import { Season_context } from '@/App'
 
+
 function home() {
   const searchbar = useRef([])
     const searchbutton = useRef([])
@@ -27,7 +28,7 @@ function home() {
     sessionStorage.removeItem("animedatasearch")
     sessionStorage.removeItem("lastupdatetimesearch")
     sessionStorage.setItem('activetab','Plan To Watch')
-
+   
    
 
     if(localStorage.getItem('Watching')==null){
@@ -92,6 +93,7 @@ function home() {
   },[searchval])
   
   useEffect(()=>{
+   
     checkadder(seasoninfo).then(
       setTimeout(validator, 2000)
     )

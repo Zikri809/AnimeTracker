@@ -1,4 +1,7 @@
 export default  function validator(){
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
     const storageidentifier = ['PlanToWatch','Completed','Watching','OnHold', 'Dropped']
     //console.log('validator is working')
     storageidentifier.forEach((storagename)=>{
@@ -17,7 +20,7 @@ export default  function validator(){
                 const userwatch = {userstatus:watchlistcategory.get(mal_id).userstatus, userprogress: watchlistcategory.get(mal_id).userprogress,userscore:  watchlistcategory.get(mal_id).userscore}
                 const apifetch = await fetch('https://api.jikan.moe/v4/anime/'+mal_id)
                 if (!apifetch.ok) throw new Error(`HTTP ${apifetch.status}`)
-                console.log('validation calls')
+                console.log('validation fetching calls')
                 const apidata = await apifetch.json()
                 watchlistcategory.set(mal_id,Object.assign(await apidata.data,userwatch))
                 localStorage.setItem(storagename,JSON.stringify([...watchlistcategory]))
@@ -26,7 +29,7 @@ export default  function validator(){
             catch(error){
                 //console.log('error encoutered ')
                 //console.error('Validation error ',error)
-                setTimeout(apifetch(mal_id), 3000);
+                sleep(1000).thent(apifetch(mal_id));
                
             }
         }

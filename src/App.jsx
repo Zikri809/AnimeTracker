@@ -192,7 +192,7 @@ upcoming_year = upcoming_year_funct(seasons,current_season,current_year)
   return (
   <>
   
-  <Season_context.Provider value={{current_year,current_season,past_season,past_year,upcoming_season,upcoming_year}}>
+  <Season_context.Provider value={{current_month,current_year,current_season,past_season,past_year,upcoming_season,upcoming_year}}>
   <QueryClientProvider client={queryclient}>
     
       <RouterProvider router={router}/>
