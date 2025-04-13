@@ -12,9 +12,21 @@ export default function searchpage(props){
         const [currentpage , setpage ] = useState(1)
         const isupdated = useRef(false)
         const isaddedarr = useRef(false)
+        const [rerender, Setrerender] = useState(false)
         const [hasScrolled, setHasScrolled] = useState(false);
+        const [searchtarget, Set_search_target] = useState(null)
         const [{ x, y }, scrollTo] = useWindowScroll();
         let params = useParams()
+        function clearstate(inputval){
+            setpage(1)
+            setLoading(true)
+            setHasScrolled(false)
+            setAnimearr([])
+            Setrerender(!rerender)
+            Set_search_target(inputval)
+            isaddedarr.current=false
+            isupdated.current=false
+        }
         
         useEffect(()=>{
             if(!isLoading){
@@ -62,7 +74,8 @@ export default function searchpage(props){
                         sessionStorage.removeItem("lastupdatetimesearch")
                     }
                 }  
-                const response = await fetch('https://api.jikan.moe/v4/anime?letter&limit=24&sfw=true&page='+currpage+'&q='+params.title)
+                console.log('apilinks https://api.jikan.moe/v4/anime?letter&limit=24&sfw=true&page='+currpage+'&q='+(searchtarget==null?params.title:searchtarget))
+                const response = await fetch('https://api.jikan.moe/v4/anime?letter&limit=24&sfw=true&page='+currpage+'&q='+(searchtarget==null?params.title:searchtarget))
                 const apifeedback = await response.json()
                 const top24 = apifeedback.data
                 console.log('apifeedback',apifeedback)
@@ -83,8 +96,10 @@ export default function searchpage(props){
                )
                if(!isaddedarr.current){
                 isaddedarr.current = true
+                console.log('api setn anime aree')
                 setAnimearr((animearr)=>[...animearr,...deconstructed])
                 const currenttimedays = Math.floor(Date.now()/86400000)
+               
                 sessionStorage.setItem('lastupdatetimesearch',JSON.stringify(currenttimedays))
                 sessionStorage.setItem('animedatasearch',JSON.stringify([...animearr,...deconstructed]))
                 
@@ -92,26 +107,25 @@ export default function searchpage(props){
                 //console.log('local storage ',JSON.parse(sessionStorage.getItem('animedata')))
                 isupdated.current = false
             }
-                setLoading(false)
+            setLoading(false)
                     
                 
             }
             catch(error){
-                fetchapi(currentpage)
+                fetchapi(currentpage,searchtarget)
                 console.error(error)
             }
         }
         
         useEffect(()=>{
-
-            fetchapi(currentpage) 
-        },[currentpage])
+            fetchapi(currentpage,searchtarget) 
+        },[currentpage,params])
         console.log('fetching ',animearr)
         console.log('current page is ',currentpage)
         console.log('params is ',params)
     return(
        <body   className='relative top-0 left-0 font-poppins overflow-x-hidden m-0   w-screen h-auto  bg-black text-white font-poppins ml-1  antialiased' >
-            <Navbar searchtitle={params.title}/>
+            <Navbar set_state={clearstate} searchtitle={params.title}/>
             { isLoading?<div className=" w-screen h-screen flex flex-row justify-center items-center "> <div class="loader"></div></div>:<div  className='relative top-18 lg:grid lg:grid-cols-2 w-screen lg:grid-rows '>
             {
              ( animearr.length!=0?(animearr.map((element) =>(
