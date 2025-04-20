@@ -66,12 +66,12 @@ export default function searchnavbar( {set_state, searchtitle}){
   
     return(
         <nav className="fixed border-b-1 border-gray-700 z-3 bg-black w-screen pl-4 h-20 px-2 pr-4 mb-3 top-0 left-0 flex flex-row items-center justify-between">
-        <div className="flex  flex-row items-center gap-2 sm:gap-2">
+        <div className="flex justify-center  flex-row items-center gap-2 sm:gap-2">
             <Link to='/'>
-             <Button className='bg-black border-gray-700 ' variant="outline" size="icon"><ChevronLeft  /></Button> 
+             <Button className='bg-zinc-800 text-white hover:text-black hover:bg-zinc-400' variant="secondary" size="icon"><ChevronLeft  /></Button> 
             </Link>
            
-        <p ref={search_resultref} className="line-clamp-1 overflow-hidden text-ellipsis text-2xl  text-white font-bold text-center">Search for: {searchtitle}</p>
+        <p ref={search_resultref} className="line-clamp-1 overflow-hidden text-ellipsis text-2xl ml-2 text-white font-bold text-center">{searchtitle}</p>
        
         </div>
         <div ref={div_ref} className="flex ml-2 w-fit justify-around  items-center  space-x-2">

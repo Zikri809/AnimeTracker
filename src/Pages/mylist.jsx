@@ -79,13 +79,13 @@ export default function mylist(){
         <div className="bg-black  min-h-[100vh]"> 
              <Navbar/>
       
-             <Tabs defaultValue="Plan To Watch" value={activetab} onValueChange={handletabchange} className="relative w-full top-20  bg-black">
+             <Tabs defaultValue="Plan To Watch" value={activetab} onValueChange={handletabchange} className="relative w-full top-12 border-0 border-blue-500 bg-black">
             <TabsList style={{scrollbarWidth: 'none', msOverflowStyle: 'none'}} className='no-scrollbar::-webkit-scrollbar w-full text-xl  z-2 fixed touch-auto  pb-0 rounded-none bg-black text-black border-b-1 overflow-auto border-gray-600'>
-              <TabsTrigger  onClick={scrollreset} className='ml-16 sm:ml-4 w-300  text-base data-[state=active]:bg-gray-700  data-[state=active]:rounded-b-none data-[state=active]:text-white text-white active:bg-black ' value="Plan To Watch">Plan To Watch</TabsTrigger>
-              <TabsTrigger  onClick={scrollreset} className='text-white    text-base  data-[state=active]:bg-gray-700 data-[state=active]:rounded-b-none data-[state=active]:text-white' value="Completed">Completed</TabsTrigger>
-              <TabsTrigger  onClick={scrollreset} className='text-white    text-base data-[state=active]:bg-gray-700  data-[state=active]:rounded-b-none data-[state=active]:text-white' value="Watching">Watching</TabsTrigger>
-              <TabsTrigger  onClick={scrollreset} className='text-white    text-base data-[state=active]:bg-gray-700  data-[state=active]:rounded-b-none data-[state=active]:text-white' value="On Hold">On Hold</TabsTrigger>
-              <TabsTrigger  onClick={scrollreset} className=' text-white    text-base data-[state=active]:bg-gray-700  data-[state=active]:rounded-b-none data-[state=active]:text-white' value="Dropped">Dropped</TabsTrigger>
+              <TabsTrigger  onClick={scrollreset} className='ml-16 sm:ml-4 w-300  text-base data-[state=active]:border-b-1 data-[state=active]:border-b-white data-[state=active]:rounded-b-none data-[state=active]:bg-inherit    data-[state=active]:text-white text-white  ' value="Plan To Watch">Plan To Watch</TabsTrigger>
+              <TabsTrigger  onClick={scrollreset} className='text-white    text-base      data-[state=active]:bg-inherit  data-[state=active]:text-white  data-[state=active]:border-b-1 data-[state=active]:border-b-white data-[state=active]:rounded-b-none' value="Completed">Completed</TabsTrigger>
+              <TabsTrigger  onClick={scrollreset} className='text-white    text-base      data-[state=active]:bg-inherit  data-[state=active]:text-white  data-[state=active]:border-b-1 data-[state=active]:border-b-white data-[state=active]:rounded-b-none' value="Watching">Watching</TabsTrigger>
+              <TabsTrigger  onClick={scrollreset} className='text-white    text-base      data-[state=active]:bg-inherit  data-[state=active]:text-white  data-[state=active]:border-b-1 data-[state=active]:border-b-white data-[state=active]:rounded-b-none' value="On Hold">On Hold</TabsTrigger>
+              <TabsTrigger  onClick={scrollreset} className=' text-white    text-base     data-[state=active]:bg-inherit  data-[state=active]:text-white  data-[state=active]:border-b-1 data-[state=active]:border-b-white data-[state=active]:rounded-b-none' value="Dropped">Dropped</TabsTrigger>
             </TabsList>
             <TabsContent className='relative top-10 ' value="Plan To Watch">
             {isloading? <p>Loading please wait</p>:
