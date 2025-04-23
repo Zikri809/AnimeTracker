@@ -11,7 +11,7 @@ const relation = (props) => {
           const response = await fetch('https://api.jikan.moe/v4/anime/'+props.id+'/relations')
           const apirelfeedback = await response.json()
           const showrelinfo =  apirelfeedback.data
-          console.log(showrelinfo)
+          //console.log(showrelinfo)
           Setanimerelinfo(showrelinfo)
           Setloading(false)
       }
@@ -26,7 +26,7 @@ const relation = (props) => {
 
     
   
-console.log('animerelinfo ',animerelinfo)
+//console.log('animerelinfo ',animerelinfo)
   return (
     <div className='flex bg-black w-screen px-5 py-4 flex-wrap flex-col justify-between '>
      {

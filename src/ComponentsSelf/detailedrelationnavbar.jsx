@@ -12,7 +12,7 @@ function morenavbar(props){
         const handleClick = () => {
             copy(props.sectionTitle)
             button.removeEventListener('click', handleClick);
-            console.log(buttonref)
+            //console.log(buttonref)
             buttonref.current.innerHTML ='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-check"><path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/></svg>' 
             setTimeout(()=>{
                 buttonref.current.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>'
@@ -24,7 +24,7 @@ function morenavbar(props){
           
     },[refstate])
    
-console.log('id is',id)
+//console.log('id is',id)
 return (
     <nav className="fixed border-b-1 border-gray-700 z-3 bg-black w-screen pl-4 h-20 px-2 pr-4 mb-3 top-0 left-0 flex flex-row items-center justify-between">
         <div className="flex  flex-row items-center gap-2 sm:gap-1">
