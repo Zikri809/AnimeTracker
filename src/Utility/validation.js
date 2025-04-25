@@ -29,7 +29,7 @@ export default  function validator(){
             catch(error){
                 //console.log('error encoutered ')
                 //console.error('Validation error ',error)
-                sleep(1000).thent(apifetch(mal_id));
+                sleep(1000).then(apifetch(mal_id));
                
             }
         }

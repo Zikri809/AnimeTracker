@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa';
-
+import iconsdata from './public/AppImages/icons.json' assert { type: 'json' }
 // https://vite.dev/config/
 export default defineConfig({
   server: {
@@ -18,18 +18,7 @@ export default defineConfig({
         description: 'A web app by Zikri',
         theme_color: '#000000',
         background_color: '#000000',
-        icons: [
-          {
-            src: '/anitracker-high-resolution-logo-192.webp',
-            sizes: '192x192',
-            type: 'image/webp',
-          },
-          {
-            src: '/anitracker-high-resolution-logo-512.webp',
-            sizes: '512x512',
-            type: 'image/webp',
-          },
-        ],
+        icons: iconsdata.icons,
       },
     }),
   ],
