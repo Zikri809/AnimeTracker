@@ -3,8 +3,7 @@ import Navbar from '@/ComponentsSelf/detailednavbar'
 import { useEffect, useState } from "react"
 import { useParams, Link } from 'react-router-dom'
 import Relation from '@/ComponentsSelf/min'
-import { Button } from '@/components/ui/button'
-import { Plus } from 'lucide-react';
+import Add_to_watchlist_button from '@/ComponentsSelf/add to watchlist button'
 import validator from '@/Utility/validation.js'
 import { Skeleton } from "@/components/ui/skeleton"
 import Cardskeleton from '@/ComponentsSelf/animecardheader-skeleton.jsx'
@@ -39,14 +38,14 @@ useEffect(()=>{
       if(overflow_detect(synopsis_ref)){
             dropdownref.current.classList.remove('hidden')
             dropdownref.current.classList.add('flex')
-            dropdownref.current.classList.add('flex-row')
+            dropdownref.current.classList.add('flex-col')
             
             dropdownref.current.addEventListener('click',dropdown_handler)
       }
       else{
         dropdownref.current.classList.add('hidden')
         dropdownref.current.classList.remove('flex')
-        dropdownref.current.classList.remove('flex-row')
+        dropdownref.current.classList.remove('flex-col')
        
         dropdownref.current.removeEventListener('click',dropdown_handler)
       }
@@ -59,6 +58,7 @@ function dropdown_handler(){
     if(!droppeddownflg){
         synopsis_ref.current.classList.remove('max-h-30')
         synopsis_ref.current.classList.remove('line-clamp-5')
+        dropdownref.current.classList.replace('h-full','h-10')
         dropdownref.current.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-up-icon lucide-chevron-up"><path d="m18 15-6-6-6 6"/></svg>'
         droppeddownflg=true
 
@@ -67,6 +67,7 @@ function dropdown_handler(){
     else{
         synopsis_ref.current.classList.add('max-h-30')
         synopsis_ref.current.classList.add('line-clamp-5')
+        dropdownref.current.classList.replace('h-10','h-full')
          dropdownref.current.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>'
          droppeddownflg=false
     
@@ -164,12 +165,13 @@ window.addEventListener('resize', function() {
                  <Skeleton className='w-[90%] bg-zinc-700 h-8'></Skeleton>
                  <Skeleton className='w-[90%] bg-zinc-700 h-8'></Skeleton>
                 </div>
-               :<div ref={synopsis_ref}  className='relative text-justify max-h-30 line-clamp-5'>
+               :<p ref={synopsis_ref}  className='relative text-justify max-h-30 line-clamp-5'>
                     {animeinfo.synopsis}
-                    <div ref={dropdownref}  className='hidden absolute bottom-0 z-3 w-full h-10  text-neutral-500 justify-center bg-gradient-to-b  to-black'>
+                   
+                    <div ref={dropdownref}  className='hidden absolute bottom-[-10px] z-3 w-full h-full items-center  text-neutral-500 justify-end bg-gradient-to-b  to-black'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
-                </div>}
+                </p>}
                 </div>
               
                {
@@ -244,11 +246,7 @@ window.addEventListener('resize', function() {
                     </div>
                 </div>
                     {isloading?<Skeleton className='h-30 mt-2 bg-zinc-700 w-[90%]'/>: <Relation id={animeinfo.mal_id}/>}
-                    <Link viewTransition to={id.hasOwnProperty('section')?('/'+id.section+'/'+id.mal_id+'/tracking'):(id.hasOwnProperty('title')?'/search/'+id.title+'/'+id.mal_id+'/tracking':(id.hasOwnProperty('mylist_tab')?'/mylist/'+id.mylist_tab+'/'+id.mal_id+'/tracking':'/'+id.mal_id+'/tracking'))}>
-                    <Button type='button' size='xl' className='p-4 sm:p-5 sm:text-lg fixed right-0 bottom-0 mb-5 bg-gray-800 mr-5 hover:bg-gray-300 hover:text-black text-blue-100'>
-                    <Plus size={36} />Add to watchlist
-                    </Button>
-                    </Link>
+                    <Add_to_watchlist_button/>
             </div>
            
         </body>
