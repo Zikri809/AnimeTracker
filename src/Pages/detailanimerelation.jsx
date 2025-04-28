@@ -11,6 +11,7 @@ import Cardskeleton from '@/ComponentsSelf/animecardheader-skeleton.jsx'
 import overflow_detect from  '@/Utility/overflow_detect.jsx'
 import { useRef } from 'react'
 import { useDebounce } from "@uidotdev/usehooks";
+import Add_to_watchlist_button from '../ComponentsSelf/add to watchlist button'
 
 export default function detailanime(props){
     const [animeinfo, Setanimeinfo] = useState([])
@@ -102,7 +103,7 @@ export default function detailanime(props){
     return (
         <body className='relative overflow-x-hidden top-0 left-0   m-0   w-screen h-auto  bg-black text-white font-poppins my-1 antialiased' >
             {isloading?  
-            <nav className='flex flex-row justify-between items-center px-4 top-0 fixed bg-black z-2 w-full h-20'>
+            <nav className='flex flex-row justify-between items-center px-4 top-0 fixed bg-black z-4 w-full h-20'>
                 <div className='flex flex-row gap-3'>
                     <Skeleton className='h-10 bg-zinc-700 w-10 rounded-md '/>
                     <Skeleton className='h-10 bg-zinc-700 sm:w-120 w-70 '/>
@@ -239,14 +240,10 @@ export default function detailanime(props){
                     </div>
                 </div>
                     {isloading?<Skeleton className='h-30 mt-2 bg-zinc-700 w-[90%]'></Skeleton>: <Relation id={animeinfo.mal_id}/>}
-                    <Link viewTransition to={id.hasOwnProperty('section')?('/'+id.section+'/'+id.mal_id+'/relation/'+id.relation_id+'/tracking'):
+                    <Add_to_watchlist_button to={id.hasOwnProperty('section')?('/'+id.section+'/'+id.mal_id+'/relation/'+id.relation_id+'/tracking'):
                         (id.hasOwnProperty('title')?'/search/'+id.title+'/'+id.mal_id+'/relation/'+id.relation_id+'/tracking':
                         (id.hasOwnProperty('mylist_tab')?'/mylist/'+id.mylist_tab+'/'+id.mal_id+'/relation/'+id.relation_id+'/tracking':
-                        '/'+id.mal_id+'/relation/'+id.relation_id+'/tracking'))}>
-                    <Button type='button' size='xl' className='p-4 sm:p-5 sm:text-lg fixed right-0 bottom-0 mb-5 bg-gray-800 mr-5 hover:bg-gray-300 hover:text-black text-blue-100'>
-                    <Plus size={36} />Add to watchlist
-                    </Button>
-                    </Link>
+                        '/'+id.mal_id+'/relation/'+id.relation_id+'/tracking'))}/>
             </div>
            
         </body>

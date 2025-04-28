@@ -1,15 +1,16 @@
 import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react';
 import { useParams, Link } from 'react-router-dom'
-export default function add_to_watchlist_button (){
+export default function add_to_watchlist_button (props){
     const id = useParams()
+    console.log('id is ',id)
     const added_checker = () =>{
         const plantowatchmap = new Map(JSON.parse(localStorage.getItem('PlanToWatch')))
         const watchingmap = new Map(JSON.parse(localStorage.getItem('Watching')))
         const  completedmap = new Map(JSON.parse(localStorage.getItem('Completed')))
         const onholdmap = new Map(JSON.parse(localStorage.getItem('OnHold')))
         const droppedmap = new Map(JSON.parse(localStorage.getItem('Dropped')))
-        const mal_id = parseInt(id.mal_id)
+        const mal_id = (id.hasOwnProperty('relation_id')?parseInt(id.relation_id):parseInt(id.mal_id))
         console.log('params is ', id)
         console.log('button checker id is ',mal_id)
         console.log(plantowatchmap)
@@ -46,7 +47,7 @@ export default function add_to_watchlist_button (){
     }
 
     return(
-        <Link viewTransition to={id.hasOwnProperty('section')?('/'+id.section+'/'+id.mal_id+'/tracking'):(id.hasOwnProperty('title')?'/search/'+id.title+'/'+id.mal_id+'/tracking':(id.hasOwnProperty('mylist_tab')?'/mylist/'+id.mylist_tab+'/'+id.mal_id+'/tracking':'/'+id.mal_id+'/tracking'))}>
+        <Link viewTransition to={props.to}>
         <Button type='button' size='xl' className='p-4 sm:p-5 sm:text-lg fixed right-0 bottom-0 mb-5 bg-gray-800 mr-5 hover:bg-gray-300 hover:text-black text-blue-100'>
         {added_checker()}
         </Button>

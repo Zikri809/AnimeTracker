@@ -71,7 +71,7 @@ export default function searchnavbar( {set_state, searchtitle}){
              <Button className='bg-zinc-800 text-white hover:text-black hover:bg-zinc-400' variant="secondary" size="icon"><ChevronLeft  /></Button> 
             </Link>
            
-        <p ref={search_resultref} className="line-clamp-1 overflow-hidden text-ellipsis text-2xl ml-2 text-white font-bold text-center">{searchtitle}</p>
+        <p ref={search_resultref} className="line-clamp-1 overflow-hidden text-ellipsis text-2xl ml-2 text-white font-bold text-left">{searchtitle}</p>
        
         </div>
         <div ref={div_ref} className="flex ml-2 w-fit justify-around  items-center  space-x-2">

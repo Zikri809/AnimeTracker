@@ -106,7 +106,7 @@ window.addEventListener('resize', function() {
     return (
         <body className='relative overflow-x-hidden top-0 left-0   m-0   w-screen h-auto  bg-black text-white font-poppins my-1 antialiased' >
             {isloading? 
-            <nav className='flex flex-row justify-between items-center px-4 top-0 fixed bg-black z-2 w-full h-20'>
+            <nav className='flex flex-row justify-between items-center px-4 top-0 fixed bg-black z-4 w-full h-20'>
                 <div className='flex flex-row gap-3'>
                     <Skeleton className='h-10 bg-zinc-700 w-10 rounded-md '/>
                     <Skeleton className='h-10 bg-zinc-700 sm:w-120 w-70 '/>
@@ -246,7 +246,7 @@ window.addEventListener('resize', function() {
                     </div>
                 </div>
                     {isloading?<Skeleton className='h-30 mt-2 bg-zinc-700 w-[90%]'/>: <Relation id={animeinfo.mal_id}/>}
-                    <Add_to_watchlist_button/>
+                    <Add_to_watchlist_button to={id.hasOwnProperty('section')?('/'+id.section+'/'+id.mal_id+'/tracking'):(id.hasOwnProperty('title')?'/search/'+id.title+'/'+id.mal_id+'/tracking':(id.hasOwnProperty('mylist_tab')?'/mylist/'+id.mylist_tab+'/'+id.mal_id+'/tracking':'/'+id.mal_id+'/tracking'))}/>
             </div>
            
         </body>

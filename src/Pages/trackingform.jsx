@@ -98,8 +98,15 @@ export default function trackingform(props){
                     console.error(error)
                 }
             }
-            fetchapi() 
+            fetchapi()
+            
         },[])
+
+        useEffect(()=>{
+            if(!isloading && api!=null && api2!=null){
+                last_click()
+            }
+        },[isloading,api])
 
     function completedclickhandler(e){
         
@@ -114,6 +121,56 @@ export default function trackingform(props){
         Setstatus(e.target.innerText)
         //console.log('button clicked')
       }
+      function last_click(){
+        const plantowatchmap = new Map(JSON.parse(localStorage.getItem('PlanToWatch')))
+        const watchingmap = new Map(JSON.parse(localStorage.getItem('Watching')))
+        const  completedmap = new Map(JSON.parse(localStorage.getItem('Completed')))
+        const onholdmap = new Map(JSON.parse(localStorage.getItem('OnHold')))
+        const droppedmap = new Map(JSON.parse(localStorage.getItem('Dropped')))
+        const mal_id = (id.hasOwnProperty('relation_id')?parseInt(id.relation_id):parseInt(id.mal_id))
+        //console.log('params is ', id)
+        //console.log('button checker id is ',mal_id)
+        //console.log(plantowatchmap)
+        //console.log('TURHT IS ',plantowatchmap.has(mal_id))
+        if(plantowatchmap.has(mal_id)){
+            const anime = plantowatchmap.get(mal_id)
+            btnref.current[2].click()
+            api.scrollTo(anime.userprogress);
+            api2.scrollTo(anime.userscore)
+            
+        }
+        else if (watchingmap.has(mal_id)){
+            const anime = watchingmap.get(mal_id)
+            btnref.current[0].click()
+            api.scrollTo(anime.userprogress);
+            api2.scrollTo(anime.userscore)
+            
+        }
+        else if (completedmap.has(mal_id)){
+            const anime = completedmap.get(mal_id)
+            btnref.current[1].click()
+            api.scrollTo(anime.userprogress);
+            api2.scrollTo(anime.userscore)
+           
+        }
+        else if(onholdmap.has(mal_id)){
+            const anime = onholdmap.get(mal_id)
+            btnref.current[3].click()
+            api.scrollTo(anime.userprogress);
+            api2.scrollTo(anime.userscore)
+          
+        }
+        else if(droppedmap.has(mal_id)){
+            const anime = droppedmap.get(mal_id)
+            btnref.current[4].click()
+            api.scrollTo(anime.userprogress);
+            api2.scrollTo(anime.userscore)
+        } 
+        else{
+            //do nothing
+        }
+      }
+
       function statusbutton(e){
         for(let i =0 ; i<5 ; i++){
             btnref.current[i].style.color = 'white'
@@ -325,7 +382,7 @@ export default function trackingform(props){
                     <p>Your Progress</p>
                     <p>{animeinfo.episodes} ep</p>
                 </div>
-                <Numberedcarousel apiref={setApi} length={animeinfo.episodes+1}/>
+                {isloading?<></>:<Numberedcarousel apiref={setApi} length={animeinfo.episodes+1}/>}
               
                 <div className='pb-5 text-xl flex flex-row text-gray-400 justify-between items-center'>
                     <p>Score</p>

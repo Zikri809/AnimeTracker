@@ -11,7 +11,7 @@ export default function searchnavbar(props){
              <Button className='bg-zinc-800 text-white ' variant="secondary" size="icon"><ChevronLeft  /></Button> 
             </Link>
            
-        <p  className="line-clamp-1 overflow-hidden text-ellipsis text-2xl  text-white font-bold text-center"> {props.searchtitle}</p>
+        <p  className="line-clamp-1 overflow-hidden text-ellipsis text-2xl ml-2 text-white font-bold text-left"> {props.searchtitle}</p>
        
         </div>
         <Button type='button'  className='hover:bg-gray-300 hover:text-black text-blue-400' onClick={props.savebutton} >Save</Button>
