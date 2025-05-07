@@ -69,6 +69,6 @@ To switch to the new version:
 This archived version remains **MIT licensed**, but all future development will occur in the new repository.  
 
 **Note**: Issues and PRs are disabled for this repo. Direct contributions to the [Next.js version](https://github.com/Zikri809/AnimeTracker-Next-js).  
-```
+
 
 
