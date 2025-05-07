@@ -1,104 +1,74 @@
----
 
-<div align="center">
-  <h1>🎌 AnimeTracker</h1>
-  <p><i>A sleek React.js app to track anime progress using Jikan API, styled with Tailwind CSS.</i></p>
+# ⚠️ AnimeTracker (Deprecated)  
 
-  ![Demo](https://via.placeholder.com/1200x600/1E293B/FFFFFF?text=AnimeTracker+Demo)
-  [![Vercel Deployment](https://img.shields.io/badge/Live%20Demo-Vercel-000?style=flat&logo=vercel)](https://anime-tracker-cyan-six.vercel.app/)  
-  [![Jikan API](https://img.shields.io/badge/API-Jikan-FF6F61?style=flat)](https://docs.api.jikan.moe/) 
-</div>
+> **This repository is archived and no longer maintained.**  
+> The new, improved version built with Next.js is available here:  
+> 🚀 **[AnimeTracker-Next.js](https://github.com/Zikri809/AnimeTracker-Next-js)**  
 
 ---
 
-## ✨ Features  
-- **Anime Search**: Find anime by title, genre, or season via Jikan API.  
-- **Watchlist Management**: Add/remove anime, mark episodes as watched.  
-- **Responsive UI**: Mobile-friendly design with Tailwind CSS.  
-- **Dark Mode**: Toggle between light/dark themes.  
-- **Vercel Hosting**: Zero-config deployment.  
+## 📌 Legacy Project (Vanilla React)  
 
-*(No backend/user accounts—purely frontend for now!)*  
+### Original Description  
+*An anime tracking app built with React, Tailwind CSS, and the Jikan API (MyAnimeList's unofficial API).*  
 
----
+### 🛠️ Tech Stack (Legacy)  
+- **Frontend**:  
+  - React.js (Hooks)  
+  - Tailwind CSS (Styling)  
+- **API**:  
+  - [Jikan API](https://jikan.moe/) (MyAnimeList unofficial REST API)  
+- **Tooling**:  
+  - Create React App (Boilerplate)  
+  - Browser's native `fetch()` (No Axios)  
 
-## 🛠 Tech Stack  
-- **Frontend**: React.js, Vite  
-- **Styling**: Tailwind CSS + CSS Modules  
-- **API**: [Jikan API v4](https://jikan.moe) (Unofficial MyAnimeList REST API)  
-- **Deployment**: Vercel  
-
----
-
-## 🚀 Quick Start  
-
-### Prerequisites  
-- Node.js ≥18.x  
-- npm/yarn/pnpm  
-
-### Installation  
-1. Clone the repo:  
-   ```bash  
-   git clone https://github.com/Zikri809/AnimeTracker.git  
-   cd AnimeTracker  
-   ```  
+### 🔧 How to Run (For Reference)  
+1. Clone this repo:  
+   ```sh
+   git clone https://github.com/Zikri809/AnimeTracker.git
+   ```
 2. Install dependencies:  
-   ```bash  
-   npm install  
-   ```  
-3. Run locally:  
-   ```bash  
-   npm run dev  
-   ```  
-4. Open `http://localhost:3000` in your browser.  
+   ```sh
+   npm install
+   ```
+3. Start the dev server:  
+   ```sh
+   npm start
+   ```
 
-*(No `.env` required—Jikan API is public!)*  
+### 📂 Project Structure (Legacy)  
+```
+public/
+src/
+  ├── components/  # React components (e.g., AnimeCard, SearchBar)
+  ├── hooks/       # Custom React hooks
+  ├── App.js       # Main app logic
+  ├── index.js     # React entry point
+  └── styles/      # Tailwind CSS imports
+```
+
+### ❓ Why This Was Deprecated  
+- Migrated to **Next.js** for:  
+  - Built-in routing and API endpoints  
+  - Improved performance with SSR/SSG  
+  - Better developer experience  
+- New features in Next.js version:  
+  - Authentication (planned)  
+  - Enhanced watchlist system  
 
 ---
 
-## 📸 Screenshots  
-| ![Homepage](https://via.placeholder.com/400x225/1E293B/FFFFFF?text=Anime+Search) | ![Watchlist](https://via.placeholder.com/400x225/FFFFFF/1E293B?text=My+Watchlist) |  
-|----------------------------------------------------------------------------------|----------------------------------------------------------------------------------|  
-| *Search anime*                                                                   | *Manage your list*                                                               |  
-
----
-
-## 🤝 Contributing  
-1. Fork the repo.  
-2. Create a branch: `git checkout -b feat/your-idea`.  
-3. Commit changes: `git commit -m "Add feature"`.  
-4. Push: `git push origin feat/your-idea`.  
-5. Open a Pull Request.  
-
-*(No formal guidelines yet—keep it simple!)*  
+## 🔄 Migration Guide  
+To switch to the new version:  
+1. Visit **[AnimeTracker-Next.js](https://github.com/Zikri809/AnimeTracker-Next-js)**  
+2. Follow the updated setup instructions there.  
 
 ---
 
 ## 📜 License  
-MIT © [Zikri809](https://github.com/Zikri809).  
-*Not affiliated with MyAnimeList or Jikan.*  
+This archived version remains **MIT licensed**, but all future development will occur in the new repository.  
 
----
+**Note**: Issues and PRs are disabled for this repo. Direct contributions to the [Next.js version](https://github.com/Zikri809/AnimeTracker-Next-js).  
+```
 
-### ❓ FAQ  
-**Q: Why Jikan API?**  
-→ Free, no-auth, and mirrors MyAnimeList data reliably.  
 
-**Q: Can I save my watchlist permanently?**  
-→ *Not yet!* Local storage only—future update may add Firebase.  
-
-**Q: How to deploy my own copy?**  
-→ Fork → Connect to Vercel → Push to `main`. Done!  
-
----
-
-## 🔗 Links
-
-<div align="center">
-  
-  [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000?style=for-the-badge&logo=vercel)](https://anime-tracker-cyan-six.vercel.app/) 
-  [![Report Issue](https://img.shields.io/badge/Report_Issue-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/Zikri809/AnimeTracker/issues)
-  
-  📅 **Last Updated**: 2025-04-26
-  
-</div>
